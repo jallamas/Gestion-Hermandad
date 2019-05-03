@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,9 @@ public class LineaPedido {
 	private Long id;
 
 	private PapeletaSitio papeleta;
+	
+	@ManyToOne
+	private Pedido pedido;
 
 	/**
 	 * @param papeleta

@@ -10,9 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * Esta clase modela los pedidos.
@@ -31,6 +34,40 @@ public class Pedido {
 
 	@ManyToOne
 	private Hermano hermano;
-	
+
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@OneToMany(mappedBy = "pedido")
 	private List<LineaPedido> listaLineas;
+
+	/**
+	 * 
+	 * @param hermano
+	 * @param listaLineas
+	 */
+	public Pedido(Hermano hermano, List<LineaPedido> listaLineas) {
+		super();
+		this.hermano = hermano;
+		this.listaLineas = listaLineas;
+	}
+
+	/**
+	 * Método que nos permite añadir una línea de pedido a la lista de líneas de un
+	 * pedido.
+	 * 
+	 * @param lineapedido Línea del pedido.
+	 */
+	public void addLineaPedido(LineaPedido lineapedido) {
+		this.listaLineas.add(lineapedido);
+		lineapedido.setPedido(this);
+	}
+
+	/**
+	 * 
+	 * @param lineapedido
+	 */
+	public void removeLineaPedido(LineaPedido lineapedido) {
+		this.listaLineas.remove(lineapedido);
+		lineapedido.setPedido(null);
+	}
 }

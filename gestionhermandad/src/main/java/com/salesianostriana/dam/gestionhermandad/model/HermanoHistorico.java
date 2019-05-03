@@ -4,7 +4,6 @@
 package com.salesianostriana.dam.gestionhermandad.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -53,16 +52,15 @@ public class HermanoHistorico extends Hermano {
 	 * @param numHermano      Número de hermano que indica la antigüedad.
 	 * @param isAdmin         Booleano que indica si es administrador de la
 	 *                        aplicación.
-	 * @param pedidos         Lista de pedidos del hermano.
 	 * @param fechaBaja       Fecha en la que causó baja en la Hermandad.
 	 * @param causaBaja       Causas por las que se dio de baja.
 	 */
 	public HermanoHistorico(String nombre, String apellidos, String telefono, String movil, String direccion,
 			String provincia, String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento,
 			String email, String usuario, String password, LocalDate fechaAlta, int numHermano, boolean isAdmin,
-			List<Pedido> pedidos, LocalDate fechaBaja, String causaBaja) {
+			LocalDate fechaBaja, String causaBaja) {
 		super(nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais, fechaNacimiento,
-				email, usuario, password, fechaAlta, numHermano, isAdmin, pedidos);
+				email, usuario, password, fechaAlta, numHermano, isAdmin);
 		this.fechaBaja = fechaBaja;
 		this.causaBaja = causaBaja;
 	}
