@@ -5,6 +5,7 @@ package com.salesianostriana.dam.gestionhermandad.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
+@DiscriminatorValue("HermanoHistorico")
 @Entity
 public class HermanoHistorico extends Hermano {
 

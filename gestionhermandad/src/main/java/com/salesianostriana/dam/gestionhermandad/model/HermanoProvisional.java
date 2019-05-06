@@ -5,11 +5,16 @@ package com.salesianostriana.dam.gestionhermandad.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,13 +27,15 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorValue("HermanoProvisional")
 @Entity
 public class HermanoProvisional {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "HERMANO_SEQ")
 	@SequenceGenerator(name = "HERMANO_SEQ", initialValue = 1)
 	private long numExpediente;
@@ -42,10 +49,12 @@ public class HermanoProvisional {
 	private String localidad;
 	private String codigoPostal;
 	private String pais;
+	@DateTimeFormat(pattern = "dd-mm-yyyy")
 	private LocalDate fechaNacimiento;
 	private String email;
 	private String usuario;
 	private String password;
+	@DateTimeFormat(pattern = "dd-mm-yyyy")
 	private LocalDate fechaAlta;
 
 	/**

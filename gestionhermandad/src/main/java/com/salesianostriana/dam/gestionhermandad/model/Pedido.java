@@ -3,14 +3,20 @@
  */
 package com.salesianostriana.dam.gestionhermandad.model;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,23 +38,25 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fechaPedido;
+
 	@ManyToOne
 	private Hermano hermano;
 
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(mappedBy = "pedido")
-	private List<LineaPedido> listaLineas;
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private Set<LineaPedido> listaLineas = new HashSet<>();
 
 	/**
 	 * 
 	 * @param hermano
 	 * @param listaLineas
 	 */
-	public Pedido(Hermano hermano, List<LineaPedido> listaLineas) {
+	public Pedido(Hermano hermano) {
 		super();
 		this.hermano = hermano;
-		this.listaLineas = listaLineas;
 	}
 
 	/**
@@ -70,4 +78,5 @@ public class Pedido {
 		this.listaLineas.remove(lineapedido);
 		lineapedido.setPedido(null);
 	}
+
 }

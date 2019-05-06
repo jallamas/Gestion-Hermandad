@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,16 +28,21 @@ public class LineaPedido {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@OneToOne
 	private PapeletaSitio papeleta;
-	
+
 	@ManyToOne
 	private Pedido pedido;
 
 	/**
+	 * 
 	 * @param papeleta
+	 * @param pedido
 	 */
-	public LineaPedido(PapeletaSitio papeleta) {
+	public LineaPedido(PapeletaSitio papeleta, Pedido pedido) {
+		super();
 		this.papeleta = papeleta;
+		this.pedido = pedido;
 	}
 
 }

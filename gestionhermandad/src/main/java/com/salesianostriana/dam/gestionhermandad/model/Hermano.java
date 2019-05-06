@@ -5,10 +5,12 @@ package com.salesianostriana.dam.gestionhermandad.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,6 +25,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@DiscriminatorValue("Hermano")
 @Entity
 public class Hermano extends HermanoProvisional {
 
@@ -32,6 +35,9 @@ public class Hermano extends HermanoProvisional {
 
 	private int numHermano;
 	private boolean isAdmin;
+	
+	@ManyToOne
+	private Puesto puesto;
 
 	/**
 	 * @param nombre          Nombre del hermano
