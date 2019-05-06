@@ -36,9 +36,6 @@ public class Hermano extends HermanoProvisional {
 	private int numHermano;
 	private boolean isAdmin;
 	
-	@ManyToOne
-	private Puesto puesto;
-
 	/**
 	 * @param nombre          Nombre del hermano
 	 * @param apellidos       Apellidos del hermano.
