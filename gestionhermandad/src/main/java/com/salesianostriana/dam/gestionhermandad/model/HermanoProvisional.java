@@ -95,7 +95,7 @@ public class HermanoProvisional {
 		this.email = email;
 		this.usuario = usuario;
 		this.password = password;
-		this.fechaAlta = fechaAlta;
+		this.fechaAlta = LocalDate.now();
 	}
 
 }
