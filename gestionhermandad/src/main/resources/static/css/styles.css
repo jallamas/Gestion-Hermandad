@@ -1,0 +1,13 @@
+header.jumbotron{
+    background-image: url(../img/header.jpg);
+    background-size:cover;
+}
+.bg-info{
+    background-color: blueviolet !important;
+}
+.carousel-inner img{
+    width: 100%;
+}
+.rounded{
+    border-radius: 2% !important;
+}
