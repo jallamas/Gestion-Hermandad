@@ -38,8 +38,8 @@ public class HermanoProvisional {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "HERMANO_SEQ")
-	@SequenceGenerator(name = "HERMANO_SEQ", initialValue = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EXPHERMANO_SEQ")
+	@SequenceGenerator(name = "EXPHERMANO_SEQ", initialValue = 1)
 	private long numExpediente;
 
 	private String nombre;
@@ -51,12 +51,12 @@ public class HermanoProvisional {
 	private String localidad;
 	private String codigoPostal;
 	private String pais;
-	@DateTimeFormat(pattern = "dd-mm-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
 	private String email;
 	private String usuario;
 	private String password;
-	@DateTimeFormat(pattern = "dd-mm-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaAlta;
 
 	/**
@@ -95,7 +95,7 @@ public class HermanoProvisional {
 		this.email = email;
 		this.usuario = usuario;
 		this.password = password;
-		this.fechaAlta = LocalDate.now();
+		this.fechaAlta = fechaAlta;
 	}
 
 }

@@ -1,105 +1,95 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
-    <head>
-        <title>Principal</title>
-        <!-- Required meta tags -->
-        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
-        <!--Mis estilos-->
-        <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}" />
-    </head>
-    <body>
-        <header class="jumbotron text-warning text-right mb-0">
-            <h1 class="display-4">Mi Hermandad</h1>
-        </header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
- 
-        </nav>
-        <h3>Bienvenido, introduzca los datos necesarios para el registro</h3>
-        <form method="POST" th:action="addHermanoProvisional" th:object="${hermanoProvisionalForm}">
-             <table>
-                <tr>
-                    <td><label for="nombre">Nombre</label></td>
-                    <td><input type="text" th:field="*{nombre}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="apellidos">Apellidos</label></td>
-                    <td><input type="text" th:field="*{apellidos}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="telefono">Telefono</label></td>
-                    <td><input type="text" th:field="*{telefono}"/></td>
-                </tr>
-                                <tr>
-                    <td><label for="movil">Móvil</label></td>
-                    <td><input type="text" th:field="*{movil}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="direccion">Dirección</label></td>
-                    <td><input type="text" th:field="*{direccion}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="provincia">Provincia</label></td>
-                    <td><input type="text" th:field="*{telefono}"/></td>
-                </tr>
-                                <tr>
-                    <td><label for="apellidos">Apellidos</label></td>
-                    <td><input type="text" th:field="*{apellidos}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="telefono">Telefono</label></td>
-                    <td><input type="text" th:field="*{telefono}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="localidad">Localidad</label></td>
-                    <td><input type="text" th:field="*{localidad}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="codigoPostal">Código Postal</label></td>
-                    <td><input type="text" th:field="*{codigoPostal}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="pais">País</label></td>
-                    <td><input type="text" th:field="*{pais}"/></td>
-                </tr>
-                                <tr>
-                    <td><label for="fechaNacimiento">Fecha de nacimiento</label></td>
-                    <td><input type="date" th:field="*{fechaNacimiento}"/></td>
-                </tr>
-                                <tr>
-                    <td><label for="email">Email</label></td>
-                    <td><input type="email" th:field="*{email}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="usuario">Usuario</label></td>
-                    <td><input type="text" th:field="*{usuario}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="password">Contraseña</label></td>
-                    <td><input type="password" th:field="*{password}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="password2">Repita la contraseña</label></td>
-                    <td><input type="password" th:field="*{password2}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="fechaAlta">Fecha de Alta</label></td>
-                    <td><input type="date" th:field="*{fechaAlta}"/></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-            </table>
-        </form>
- <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Principal</title>
+<!-- Required meta tags -->
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!--Mis estilos-->
+<link rel="stylesheet" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<header class="jumbotron text-warning text-right mb-0">
+		<h1 class="display-4">Mi Hermandad</h1>
+	</header>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark"></nav>
+	<h3>Bienvenido, introduzca los datos necesarios para el registro</h3>
+	
+		<form th:action="@{/registro/submit}" th:object="${hermanoProvisional}"	method="post">
+
+		<table>
+			<tr>
+				<td><label for="nombre">Nombre</label></td>
+				<td><input type="text" th:field="*{nombre}" /></td>
+			</tr>
+			<tr>
+				<td><label for="apellidos">Apellidos</label></td>
+				<td><input type="text" th:field="*{apellidos}" /></td>
+			</tr>
+			<tr>
+				<td><label for="telefono">Telefono</label></td>
+				<td><input type="text" th:field="*{telefono}" /></td>
+			</tr>
+			<tr>
+				<td><label for="movil">Móvil</label></td>
+				<td><input type="text" th:field="*{movil}" /></td>
+			</tr>
+			<tr>
+				<td><label for="direccion">Dirección</label></td>
+				<td><input type="text" th:field="*{direccion}" /></td>
+			</tr>
+			<tr>
+				<td><label for="localidad">Localidad</label></td>
+				<td><input type="text" th:field="*{localidad}" /></td>
+			</tr>
+			<tr>
+				<td><label for="provincia">Provincia</label></td>
+				<td><input type="text" th:field="*{provincia}" /></td>
+			</tr>
+			<tr>
+				<td><label for="codigoPostal">Código Postal</label></td>
+				<td><input type="text" th:field="*{codigoPostal}" /></td>
+			</tr>
+			<tr>
+				<td><label for="pais">País</label></td>
+				<td><input type="text" th:field="*{pais}" /></td>
+			</tr>
+			<tr>
+				<td><label for="fechaNacimiento">Fecha de nacimiento</label></td>
+				<td><input type="date" th:field="*{fechaNacimiento}" /></td>
+			</tr>
+			<tr>
+				<td><label for="email">Email</label></td>
+				<td><input type="email" th:field="*{email}" /></td>
+			</tr>
+			<tr>
+				<td><label for="usuario">Usuario</label></td>
+				<td><input type="text" th:field="*{usuario}" required /></td>
+			</tr>
+			<tr>
+				<td><label for="password">Contraseña</label></td>
+				<td><input type="password" th:field="*{password}" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="Enviar" value="Enviar datos" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
 </html>
