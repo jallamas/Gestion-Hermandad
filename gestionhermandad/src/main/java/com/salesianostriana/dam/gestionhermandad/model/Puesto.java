@@ -32,5 +32,14 @@ public class Puesto {
 	private double precio;
 	private int paso;
 	private boolean esDestacado;
-	private String descripcion;
+
+	public Puesto(String nombre, int numero, int tramo, double precio, int paso, boolean esDestacado) {
+		this.nombre = nombre;
+		this.numero = numero;
+		this.tramo = tramo;
+		this.precio = precio;
+		this.paso = paso;
+		this.esDestacado = esDestacado;
+	}
+
 }

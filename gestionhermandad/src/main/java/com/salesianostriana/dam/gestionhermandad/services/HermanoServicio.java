@@ -16,4 +16,5 @@ import com.salesianostriana.dam.gestionhermandad.services.base.ServicioBase;
 @Service
 public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoRepository> {
 
+	protected HermanoRepository hermanoRepositorio;
 }

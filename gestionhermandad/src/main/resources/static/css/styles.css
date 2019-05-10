@@ -11,3 +11,6 @@ header.jumbotron{
 .rounded{
     border-radius: 2% !important;
 }
+form input{
+	width:250px;
+}

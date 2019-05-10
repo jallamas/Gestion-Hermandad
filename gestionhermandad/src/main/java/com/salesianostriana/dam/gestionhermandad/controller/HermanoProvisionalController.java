@@ -16,7 +16,7 @@ import com.salesianostriana.dam.gestionhermandad.model.HermanoProvisional;
 import com.salesianostriana.dam.gestionhermandad.services.HermanoProvisionalServicio;
 
 /**
- * @author jallamas
+ * @author José Antonio Llamas Álvarez
  *
  */
 @Controller

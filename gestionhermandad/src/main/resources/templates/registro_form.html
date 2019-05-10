@@ -20,11 +20,30 @@
 	<header class="jumbotron text-warning text-right mb-0">
 		<h1 class="display-4">Mi Hermandad</h1>
 	</header>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark"></nav>
-	<h3>Bienvenido, introduzca los datos necesarios para el registro</h3>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link text-warning" href="/">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning" href="#">Quienes somos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-warning" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hermandad</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">Historia</a>
+                            <a class="dropdown-item" href="#">Galería</a>
+                        </div>
+                    </li>
+                </ul>
+	</nav>
+	
+		<h3>Bienvenido, introduzca los datos necesarios para el registro</h3>
 	
 		<form th:action="@{/registro/submit}" th:object="${hermanoProvisional}"	method="post">
-
 		<table>
 			<tr>
 				<td><label for="nombre">Nombre</label></td>
