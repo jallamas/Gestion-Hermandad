@@ -32,5 +32,5 @@ public class HermanoProvisionalServicio extends ServicioBase<HermanoProvisional,
 		hermanoServicio.save(hermano);
 		return hermano;
 	}
-	
+
 }

@@ -26,13 +26,30 @@ public class HermanoController {
 		this.hermanoServicio = hermanoServicio;
 	}
 
+	@GetMapping("/login")
+	public String mostrarlogin(Model model) {
+		model.addAttribute("hermano", new Hermano());
+		return "login";
+	}
+
+	@PostMapping("/login/submit")
+	public String procesarlogin(Model model) {
+		return "login";
+	}
+
 	@GetMapping({ "/listarTodos" })
 	public String listarTodos(Model model) {
 		model.addAttribute("listaHerm", hermanoServicio.findAll());
 		return "listaHermanos";
 	}
 
-	@GetMapping("/editar/{id}")
+	@GetMapping("/nuevoHno")
+	public String mostrarFormulario(Model model) {
+		model.addAttribute("hermano", new Hermano());
+		return "hermano_form";
+	}
+
+	@GetMapping("/editarHno/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 
 		// Buscamos al alumno por id y recordemos que el método findById del servicio,
@@ -54,14 +71,14 @@ public class HermanoController {
 	/**
 	 * Método que procesa la respuesta del formulario al editar
 	 */
-	@PostMapping("/editar/submit")
+	@PostMapping("/editarHno/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("hermano") Hermano hno) {
 		hermanoServicio.edit(hno);
 		return "redirect:/listarTodos";// Volvemos a redirigir la listado a través del controller para pintar la lista
 		// actualizada con la modificación hecha
 	}
 
-	@GetMapping("/borrarhno/{id}")
+	@GetMapping("/borrarHno/{id}")
 	public String borrarhno(@PathVariable("id") long id) {
 		hermanoServicio.deleteById(id);
 		return "redirect:/listarTodos";

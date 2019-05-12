@@ -34,6 +34,7 @@ public class Hermano extends HermanoProvisional {
 
 	private int numHermano;
 	private boolean isAdmin;
+	private boolean solicitaBaja;
 
 	/**
 	 * @param nombre          Nombre del hermano
@@ -62,11 +63,13 @@ public class Hermano extends HermanoProvisional {
 				email, usuario, password, fechaAlta);
 		this.numHermano = numHermano;
 		this.isAdmin = isAdmin;
+		this.solicitaBaja = false;
+
 	}
 
-	public Hermano(HermanoProvisional hermanoProv, int numHermano) {
-		this.numHermano = numHermano;
-		this.isAdmin = false;
-	}
+	/*
+	 * public Hermano(HermanoProvisional hermanoProv, int numHermano) {
+	 * this.numHermano = numHermano; this.isAdmin = false; }
+	 */
 
 }

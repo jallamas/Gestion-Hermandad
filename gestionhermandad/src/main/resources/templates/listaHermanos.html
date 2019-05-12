@@ -19,38 +19,37 @@
 	th:href="@{/css/styles.css}" />
 </head>
 <body>
-	<header class="jumbotron text-warning text-right mb-0">
-		<h1 class="display-4">Mi Hermandad</h1>
-	</header>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark"></nav>
-
-	<h2>Listado de Hermanos</h2>
-	<table>
-		<thead>
-			<tr>
-				<th>Nombre</th>
-				<th>Apellidos</th>
-				<th>Teléfono</th>
-				<th>Móvil</th>
-				<th>Email</th>
-				<th>Fecha de Alta</th>
-				<th>Operaciones</th>
-			</tr>
-		</thead>
-		<tr th:each="hermano : ${listaHerm}">
-			<td th:text="${hermano.nombre}"></td>
-			<td th:text="${hermano.apellidos}"></td>
-			<td th:text="${hermano.telefono}"></td>
-			<td th:text="${hermano.movil}"></td>
-			<td th:text="${hermano.email}"></td>
-			<td th:text="${hermano.fechaAlta}"></td>
-			<td>
-				<a href="#" th:href="@{/editar/{id}(id=${hermano.id})}">Editar</a> | 
-				<a href="#" th:href="@{/borrar/{id}(id=${hermano.id})}">Histórico</a>
-			</td>
-		</tr>
-	</table>
-
+	<div th:insert="fragments/nav :: header"></div>
+	<div th:insert="fragments/nav :: navAdmin"></div>
+	<div class="row">
+		<div class="col">
+			<h2>Listado de Hermanos</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Teléfono</th>
+						<th>Móvil</th>
+						<th>Email</th>
+						<th>Fecha de Alta</th>
+						<th>Operaciones</th>
+					</tr>
+				</thead>
+				<tr th:each="hermano : ${listaHerm}">
+					<td th:text="${hermano.nombre}"></td>
+					<td th:text="${hermano.apellidos}"></td>
+					<td th:text="${hermano.telefono}"></td>
+					<td th:text="${hermano.movil}"></td>
+					<td th:text="${hermano.email}"></td>
+					<td th:text="${hermano.fechaAlta}"></td>
+					<td><a href="#" th:href="@{/editarHno/{id}(id=${hermano.id})}">Editar</a>
+						| <a href="#" th:href="@{/borrarHno/{id}(id=${hermano.id})}">Histórico</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
 
 

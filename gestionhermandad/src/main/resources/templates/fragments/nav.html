@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>navAdmin</title>
+</head>
+<body>
+	<header th:fragment="header"
+		class="jumbotron text-warning text-right mb-0">
+		<h1 class="display-4">Mi Hermandad</h1>
+	</header>
+
+	<nav th:fragment="navAdmin"
+		class="navbar navbar-expand-md navbar-dark bg-dark">
+		<button class="navbar-toggler d-lg-none" type="button"
+			data-toggle="collapse" data-target="#collapsibleNavId"
+			aria-controls="collapsibleNavId" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavId">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle text-warning" href="#"
+					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Hermanos</a>
+					<div class="dropdown-menu" aria-labelledby="dropdownId">
+						<a class="dropdown-item" href="#">Gestión</a> <a
+							class="dropdown-item" th:href="@{/listarTodosProv}">Altas
+							pendientes</a> <a class="dropdown-item" href="#">Bajas pendientes</a>
+						<a class="dropdown-item" href="#">Renumerar hermanos</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle text-warning" href="#"
+					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Listados</a>
+					<div class="dropdown-menu" aria-labelledby="dropdownId">
+						<a class="dropdown-item" href="#">Censo</a> <a
+							class="dropdown-item" href="#">Búsquedas</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle text-warning" href="#"
+					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Cofradía</a>
+					<div class="dropdown-menu" aria-labelledby="dropdownId">
+						<a class="dropdown-item" href="#">Puestos destacados</a> <a
+							class="dropdown-item" href="#">Solicitudes puestos</a> <a
+							class="dropdown-item" href="#">Solicitudes Papeletas</a> <a
+							class="dropdown-item" href="#">Mapa cofradía</a>
+					</div></li>
+			</ul>
+			<ul class="navbar-nav my-2 my-lg-0">
+				<li><a class="nav-link nav-outline-warning mr-sm-2"
+					href="http://localhost:9000/">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<nav th:fragment="navUser"
+		class="navbar navbar-expand-md navbar-dark bg-dark">
+		<button class="navbar-toggler d-lg-none" type="button"
+			data-toggle="collapse" data-target="#collapsibleNavId"
+			aria-controls="collapsibleNavId" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavId">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link text-warning"
+					href="/">Inicio <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link text-warning" href="#">Quienes
+						somos</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle text-warning" href="#"
+					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Hermandad</a>
+					<div class="dropdown-menu" aria-labelledby="dropdownId">
+						<a class="dropdown-item" href="#">Historia</a> <a
+							class="dropdown-item" href="#">Galería</a>
+					</div></li>
+			</ul>
+			<ul class="navbar-nav my-2 my-lg-0">
+				<li><a class="nav-link nav-outline-warning mr-sm-2"
+					th:href="@{/login}">Área de Gestión</a></li>
+			</ul>
+		</div>
+	</nav>
+</body>
+</html>

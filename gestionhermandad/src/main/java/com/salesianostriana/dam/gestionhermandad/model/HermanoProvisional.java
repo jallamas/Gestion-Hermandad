@@ -38,8 +38,8 @@ public class HermanoProvisional {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	@SequenceGenerator(name = "EXPHERMANO_SEQ", sequenceName = "EspHermano_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EXPHERMANO_SEQ")
-	@SequenceGenerator(name = "EXPHERMANO_SEQ", initialValue = 1)
 	private long numExpediente;
 
 	private String nombre;

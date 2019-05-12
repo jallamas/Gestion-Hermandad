@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Nuevo hermano</title>
+<title>Datos del hermano</title>
 <!-- Required meta tags -->
 
 <meta charset="utf-8">
@@ -17,14 +17,21 @@
 	th:href="@{/css/styles.css}" />
 </head>
 <body>
-	<div th:insert="fragments/nav :: header"></div>
-	<div th:insert="fragments/nav :: navUser"></div>
+	<header class="jumbotron text-warning text-right mb-0">
+		<h1 class="display-4">Mi Hermandad</h1>
+	</header>
+	<div th:insert="fragments/nav :: navAdmin"></div>
 
-	<h3>Bienvenido, introduzca los datos necesarios para el registro</h3>
-
-	<form th:action="@{/registro/submit}" th:object="${hermanoProvisional}"
-		method="post">
+	<form
+		th:action="${hermano.id != 0} ? @{/editarHno/submit} : @{/nuevoHno/submit}"
+		th:object="${hermano}" method="post">
+		<input th:if="${hermano.id != 0}" type="hidden" name="id"
+			th:field="*{id}" />
 		<table>
+			<tr>
+				<td><label for="numHermano">Número de hermano</label></td>
+				<td><input disabled type="number" th:field="*{numHermano}" /></td>
+			</tr>
 			<tr>
 				<td><label for="nombre">Nombre</label></td>
 				<td><input type="text" th:field="*{nombre}" /></td>
@@ -34,7 +41,7 @@
 				<td><input type="text" th:field="*{apellidos}" /></td>
 			</tr>
 			<tr>
-				<td><label for="telefono">Telefono</label></td>
+				<td><label for="telefono">Teléfono</label></td>
 				<td><input type="text" th:field="*{telefono}" /></td>
 			</tr>
 			<tr>
@@ -76,6 +83,14 @@
 			<tr>
 				<td><label for="password">Contraseña</label></td>
 				<td><input type="password" th:field="*{password}" /></td>
+			</tr>
+			<tr>
+				<td><label for="isAdmin">Es administrador</label></td>
+				<td><input type="checkbox" th:field="*{Admin}" /></td>
+			</tr>
+			<tr>
+				<td><label for="fechaAlta">Fecha de alta</label></td>
+				<td><input disabled type="date" th:field="*{fechaAlta}" /></td>
 			</tr>
 			<tr>
 				<td><input type="submit" name="Enviar" value="Enviar datos" /></td>
