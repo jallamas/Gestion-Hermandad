@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es"
 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Hermanos</title>
+<title>Hermanos provisionales</title>
 <!-- Required meta tags -->
 
 <meta charset="utf-8">
@@ -16,7 +16,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	crossorigin="anonymous">
 
 <!--Mis estilos-->
-<link rel="stylesheet" href="../static/css/styles.css"
+<link rel="stylesheet" href="../../static/css/styles.css"
 	th:href="@{/css/styles.css}" />
 </head>
 <body>
@@ -24,7 +24,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<div th:insert="fragments/nav :: navAdmin"></div>
 	<div class="row">
 		<div class="col">
-			<h2>Listado de Hermanos</h2>
+			<h2>Altas pendientes de validación</h2>
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -37,15 +37,15 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 						<th>Operaciones</th>
 					</tr>
 				</thead>
-				<tr th:each="hermano : ${listaHerm}">
-					<td th:text="${hermano.nombre}"></td>
-					<td th:text="${hermano.apellidos}"></td>
-					<td th:text="${hermano.telefono}"></td>
-					<td th:text="${hermano.movil}"></td>
-					<td th:text="${hermano.email}"></td>
-					<td th:text="${hermano.fechaAlta}"></td>
-					<td><a href="#" th:href="@{/editarHno/{id}(id=${hermano.id})}">Editar</a>
-						| <a href="#" th:href="@{/borrarHno/{id}(id=${hermano.id})}">Histórico</a>
+				<tr th:each="hermanoProvisional : ${listaProv}">
+					<td th:text="${hermanoProvisional.nombre}"></td>
+					<td th:text="${hermanoProvisional.apellidos}"></td>
+					<td th:text="${hermanoProvisional.telefono}"></td>
+					<td th:text="${hermanoProvisional.movil}"></td>
+					<td th:text="${hermanoProvisional.email}"></td>
+					<td th:text="${hermanoProvisional.fechaAlta}"></td>
+					<td><a th:href="@{/validar/{id}(id=${hermanoProvisional.id})}">Validar</a>
+						| <a th:href="@{/borrar/{id}(id=${hermanoProvisional.id})}">Borrar</a>
 					</td>
 				</tr>
 			</table>

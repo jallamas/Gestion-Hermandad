@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.roles("ADMIN")
 			.and()
 			.withUser("user")
-			.password("user")
+			.password("1234")
 			.roles("USER");
 	}
 
@@ -36,7 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-			.antMatchers("/css/**", "/js/**", "/webjars/**", "/", "/index").permitAll()
+			.antMatchers("/h2-console/**","/css/**", "/js/**", "/webjars/**", "/", "/index","/login,/registro_form").permitAll()
+			.antMatchers("/admin/**").hasAnyRole("ADMIN")
+			.antMatchers("/user/**").hasAnyRole("USER")
 			.anyRequest()
 			.authenticated()
 			.and()

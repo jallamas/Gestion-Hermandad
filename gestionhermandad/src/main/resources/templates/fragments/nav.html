@@ -9,6 +9,7 @@
 	<header th:fragment="header"
 		class="jumbotron text-warning text-right mb-0">
 		<h1 class="display-4">Mi Hermandad</h1>
+		<h5>Bienvenido <span sec:authentication="name">Usuario</span></h5>
 	</header>
 
 	<nav th:fragment="navAdmin"
@@ -45,14 +46,13 @@
 					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Cofradía</a>
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
-						<a class="dropdown-item" href="#">Puestos destacados</a> <a
+						<a class="dropdown-item" href="#">Puestos</a> <a
 							class="dropdown-item" href="#">Solicitudes puestos</a> <a
 							class="dropdown-item" href="#">Solicitudes Papeletas</a> <a
 							class="dropdown-item" href="#">Mapa cofradía</a>
 					</div></li>
 			</ul>
 			<ul class="navbar-nav my-2 my-lg-0">
-				<li>Bienvenido <span sec:authentication="nombre">Usuario</span></li>
 				<li><a class="nav-link nav-outline-warning mr-sm-2"
 					href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
 				</li>

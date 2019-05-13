@@ -40,7 +40,7 @@ public class HermanoController {
 	@GetMapping({ "/listarTodos" })
 	public String listarTodos(Model model) {
 		model.addAttribute("listaHerm", hermanoServicio.findAll());
-		return "listaHermanos";
+		return "admin/listaHermanos";
 	}
 
 	@GetMapping("/nuevoHno")
@@ -52,19 +52,9 @@ public class HermanoController {
 	@GetMapping("/editarHno/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 
-		// Buscamos al alumno por id y recordemos que el método findById del servicio,
-		// devuelve el objeto buscado o null si no se encuentra.
-
 		Hermano hnoEditar = hermanoServicio.findById(id);
-
-		if (hnoEditar != null) {
-			model.addAttribute("hermano", hnoEditar);
-			return "hermano_form";
-		} else {
-			// No existe ningún alumno con el Id proporcionado.
-			// Redirigimos hacia el listado.
-			return "redirect:/listarTodos";
-		}
+		model.addAttribute("hermano", hnoEditar);
+		return "hermano_form";
 
 	}
 
@@ -74,8 +64,7 @@ public class HermanoController {
 	@PostMapping("/editarHno/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("hermano") Hermano hno) {
 		hermanoServicio.edit(hno);
-		return "redirect:/listarTodos";// Volvemos a redirigir la listado a través del controller para pintar la lista
-		// actualizada con la modificación hecha
+		return "redirect:/listarTodos";
 	}
 
 	@GetMapping("/borrarHno/{id}")

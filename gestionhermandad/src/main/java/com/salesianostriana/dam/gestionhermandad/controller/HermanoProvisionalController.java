@@ -38,13 +38,13 @@ public class HermanoProvisionalController {
 	public String procesarAltaProvisional(@ModelAttribute("hermanoProvisional") HermanoProvisional hermanoProvisional) {
 		hermanoProvisional.setFechaAlta(LocalDate.now());
 		hermanoProvisionalServicio.save(hermanoProvisional);
-		return "vistaHermanoProvisional";
+		return "user/vistaHermanoProvisional";
 	}
 
 	@GetMapping({ "/listarTodosProv" })
 	public String listarTodos(Model model) {
 		model.addAttribute("listaProv", hermanoProvisionalServicio.findAll());
-		return "listaHermanosProv";
+		return "admin/listaHermanosProv";
 	}
 
 	@GetMapping("/validar/{id}")

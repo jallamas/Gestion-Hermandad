@@ -5,7 +5,6 @@ package com.salesianostriana.dam.gestionhermandad.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -52,7 +51,6 @@ public class HermanoProvisional {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
 	private String email;
-	@Column(unique=true)
 	private String usuario;
 	private String password;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
