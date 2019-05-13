@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,8 +37,6 @@ public class HermanoProvisional {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@SequenceGenerator(name = "EXPHERMANO_SEQ", sequenceName = "EspHermano_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EXPHERMANO_SEQ")
 	private long numExpediente;
 
 	private String nombre;
