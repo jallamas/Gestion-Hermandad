@@ -62,7 +62,7 @@ public class HermanoHistorico extends Hermano {
 			String email, String usuario, String password, LocalDate fechaAlta, int numHermano, boolean isAdmin,
 			LocalDate fechaBaja, String causaBaja) {
 		super(nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais, fechaNacimiento,
-				email, usuario, password, fechaAlta, numHermano, isAdmin);
+				email, usuario, password, fechaAlta, numHermano);
 		this.fechaBaja = fechaBaja;
 		this.causaBaja = causaBaja;
 	}

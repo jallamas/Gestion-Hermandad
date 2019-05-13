@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>navAdmin</title>
@@ -12,6 +13,7 @@
 
 	<nav th:fragment="navAdmin"
 		class="navbar navbar-expand-md navbar-dark bg-dark">
+		<form th:action="@{/logout}" method="POST" id="logoutForm"></form>
 		<button class="navbar-toggler d-lg-none" type="button"
 			data-toggle="collapse" data-target="#collapsibleNavId"
 			aria-controls="collapsibleNavId" aria-expanded="false"
@@ -50,8 +52,10 @@
 					</div></li>
 			</ul>
 			<ul class="navbar-nav my-2 my-lg-0">
+				<li>Bienvenido <span sec:authentication="nombre">Usuario</span></li>
 				<li><a class="nav-link nav-outline-warning mr-sm-2"
-					href="http://localhost:9000/">Logout</a></li>
+					href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+				</li>
 			</ul>
 		</div>
 	</nav>

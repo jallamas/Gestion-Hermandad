@@ -58,11 +58,11 @@ public class Hermano extends HermanoProvisional {
 	 */
 	public Hermano(String nombre, String apellidos, String telefono, String movil, String direccion, String provincia,
 			String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento, String email, String usuario,
-			String password, LocalDate fechaAlta, int numHermano, boolean isAdmin) {
+			String password, LocalDate fechaAlta, int numHermano) {
 		super(nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais, fechaNacimiento,
 				email, usuario, password, fechaAlta);
 		this.numHermano = numHermano;
-		this.isAdmin = isAdmin;
+		this.isAdmin = false;
 		this.solicitaBaja = false;
 
 	}

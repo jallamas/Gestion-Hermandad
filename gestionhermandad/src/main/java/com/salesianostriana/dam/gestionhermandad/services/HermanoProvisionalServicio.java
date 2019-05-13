@@ -28,7 +28,7 @@ public class HermanoProvisionalServicio extends ServicioBase<HermanoProvisional,
 				hermanoProv.getMovil(), hermanoProv.getDireccion(), hermanoProv.getProvincia(),
 				hermanoProv.getLocalidad(), hermanoProv.getCodigoPostal(), hermanoProv.getPais(),
 				hermanoProv.getFechaNacimiento(), hermanoProv.getEmail(), hermanoProv.getUsuario(),
-				hermanoProv.getPassword(), hermanoProv.getFechaAlta(), 1, false);
+				hermanoProv.getPassword(), hermanoProv.getFechaAlta(), 1);
 		hermanoServicio.save(hermano);
 		return hermano;
 	}
