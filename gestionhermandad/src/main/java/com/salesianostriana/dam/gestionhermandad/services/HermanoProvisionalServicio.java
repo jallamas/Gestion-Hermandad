@@ -20,7 +20,8 @@ public class HermanoProvisionalServicio extends ServicioBase<HermanoProvisional,
 
 	@Autowired
 	private HermanoServicio hermanoServicio;
-
+	@Autowired
+	private HermanoProvisionalServicio hermanoProvisionalServicio;
 	protected HermanoProvisionalRepository hermanoProvisionalRepositorio;
 
 	public Hermano validarHermanoProvisional(HermanoProvisional hermanoProv) {
@@ -29,6 +30,7 @@ public class HermanoProvisionalServicio extends ServicioBase<HermanoProvisional,
 				hermanoProv.getLocalidad(), hermanoProv.getCodigoPostal(), hermanoProv.getPais(),
 				hermanoProv.getFechaNacimiento(), hermanoProv.getEmail(), hermanoProv.getUsuario(),
 				hermanoProv.getPassword(), hermanoProv.getFechaAlta(), 1);
+		hermanoProvisionalServicio.deleteById(hermanoProv.getId());
 		hermanoServicio.save(hermano);
 		return hermano;
 	}

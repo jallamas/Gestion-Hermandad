@@ -20,8 +20,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	th:href="@{/css/styles.css}" />
 </head>
 <body>
-	<div th:insert="fragments/nav :: header"></div>
-	<div th:insert="fragments/nav :: navAdmin"></div>
+	<div th:replace="fragments/nav :: header"></div>
+	<div th:replace="fragments/nav :: navAdmin"></div>
 	<div class="row">
 		<div class="col">
 			<h2>Altas pendientes de validación</h2>

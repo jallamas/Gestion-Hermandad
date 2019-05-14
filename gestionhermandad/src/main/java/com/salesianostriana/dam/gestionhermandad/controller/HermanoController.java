@@ -72,4 +72,28 @@ public class HermanoController {
 		hermanoServicio.deleteById(id);
 		return "redirect:/listarTodos";
 	}
+
+	@GetMapping("/buscar")
+	public String listarFiltrado(Model model) {
+		model.addAttribute("listaHerm", hermanoServicio.findAll());
+		return "admin/buscar";
+	}
+	
+//	@GetMapping("/hermanos/buscar")
+//	public String getInicio(Model model) {
+//		BuscarHermanoNombre hnonom=new BuscarHermanoNombre();
+//		model.addAttribute("buscarHermano",hnonom);
+//		return "admin/buscar";
+//	}
+//	
+//	@PostMapping("hermanos/buscar")
+//	public String listarClientes(@ModelAttribute("buscarCliente") BuscarHermanoNombre hnonom, Hermano hno, Model model) {
+//		System.out.println(nom);
+//		List<Hermano> clientesEncontrados=cs.buscarClienteByNomEmpresaContainingIgnoreCase(nom.getNomEmpresa());
+//		model.addAttribute("clientesEncontrados",clientesEncontrados);
+//		for(Hermano i:clientesEncontrados) {
+//			System.out.println(i);
+//		}
+//		return "admin/adminClientesListar";
+//	}
 }

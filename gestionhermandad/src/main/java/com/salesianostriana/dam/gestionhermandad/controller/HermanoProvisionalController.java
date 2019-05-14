@@ -50,7 +50,6 @@ public class HermanoProvisionalController {
 	@GetMapping("/validar/{id}")
 	public String validar(@PathVariable("id") long id) {
 		hermanoProvisionalServicio.validarHermanoProvisional(hermanoProvisionalServicio.findById(id));
-		hermanoProvisionalServicio.deleteById(id);
 		return "redirect:/listarTodosProv";
 	}
 

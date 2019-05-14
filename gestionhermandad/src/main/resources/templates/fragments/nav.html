@@ -90,5 +90,34 @@
 			</ul>
 		</div>
 	</nav>
+	<div th:fragment="listahermanos" class="row">
+		<div class="col">
+			<h2>Listado de Hermanos</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Teléfono</th>
+						<th>Móvil</th>
+						<th>Email</th>
+						<th>Fecha de Alta</th>
+						<th>Operaciones</th>
+					</tr>
+				</thead>
+				<tr th:each="hermano : ${listaHerm}">
+					<td th:text="${hermano.nombre}"></td>
+					<td th:text="${hermano.apellidos}"></td>
+					<td th:text="${hermano.telefono}"></td>
+					<td th:text="${hermano.movil}"></td>
+					<td th:text="${hermano.email}"></td>
+					<td th:text="${hermano.fechaAlta}"></td>
+					<td><a href="#" th:href="@{/editarHno/{id}(id=${hermano.id})}">Editar</a>
+						| <a href="#" th:href="@{/borrarHno/{id}(id=${hermano.id})}">Histórico</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
