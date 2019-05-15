@@ -26,16 +26,16 @@ public class HermanoController {
 		this.hermanoServicio = hermanoServicio;
 	}
 
-	@GetMapping("/login")
-	public String mostrarlogin(Model model) {
-		model.addAttribute("hermano", new Hermano());
-		return "login";
-	}
-
-	@PostMapping("/login/submit")
-	public String procesarlogin(Model model) {
-		return "login";
-	}
+//	@GetMapping("/login")
+//	public String mostrarlogin(Model model) {
+//		model.addAttribute("hermano", new Hermano());
+//		return "login";
+//	}
+//
+//	@PostMapping("/login/submit")
+//	public String procesarlogin(Model model) {
+//		return "login";
+//	}
 
 	@GetMapping({ "/listarTodos" })
 	public String listarTodos(Model model) {
@@ -55,7 +55,6 @@ public class HermanoController {
 		Hermano hnoEditar = hermanoServicio.findById(id);
 		model.addAttribute("hermano", hnoEditar);
 		return "hermano_form";
-
 	}
 
 	/**
@@ -63,13 +62,15 @@ public class HermanoController {
 	 */
 	@PostMapping("/editarHno/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("hermano") Hermano hno) {
+//		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//		hno.setPassword(passwordEncoder.encode(hno.getPassword()));
 		hermanoServicio.edit(hno);
 		return "redirect:/listarTodos";
 	}
 
-	@GetMapping("/borrarHno/{id}")
-	public String borrarhno(@PathVariable("id") long id) {
-		hermanoServicio.deleteById(id);
+	@GetMapping("/pasarHnoHist/{id}")
+	public String pasarHnoHist(@PathVariable("id") long id) {
+		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
 		return "redirect:/listarTodos";
 	}
 
@@ -78,7 +79,7 @@ public class HermanoController {
 		model.addAttribute("listaHerm", hermanoServicio.findAll());
 		return "admin/buscar";
 	}
-	
+
 //	@GetMapping("/hermanos/buscar")
 //	public String getInicio(Model model) {
 //		BuscarHermanoNombre hnonom=new BuscarHermanoNombre();

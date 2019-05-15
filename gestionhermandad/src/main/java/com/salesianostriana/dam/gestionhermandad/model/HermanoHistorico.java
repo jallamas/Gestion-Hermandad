@@ -33,7 +33,6 @@ public class HermanoHistorico extends Hermano {
 	private long id;
 
 	private LocalDate fechaBaja;
-	private String causaBaja;
 
 	/**
 	 * @param nombre          Nombre del hermano
@@ -55,16 +54,13 @@ public class HermanoHistorico extends Hermano {
 	 * @param isAdmin         Booleano que indica si es administrador de la
 	 *                        aplicación.
 	 * @param fechaBaja       Fecha en la que causó baja en la Hermandad.
-	 * @param causaBaja       Causas por las que se dio de baja.
 	 */
 	public HermanoHistorico(String nombre, String apellidos, String telefono, String movil, String direccion,
 			String provincia, String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento,
-			String email, String usuario, String password, LocalDate fechaAlta, int numHermano, boolean isAdmin,
-			LocalDate fechaBaja, String causaBaja) {
+			String email, String usuario, String password, LocalDate fechaAlta, int numHermano, LocalDate fechaBaja) {
 		super(nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais, fechaNacimiento,
 				email, usuario, password, fechaAlta, numHermano);
 		this.fechaBaja = fechaBaja;
-		this.causaBaja = causaBaja;
 	}
 
 }

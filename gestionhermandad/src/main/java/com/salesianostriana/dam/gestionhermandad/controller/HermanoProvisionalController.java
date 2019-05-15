@@ -5,6 +5,8 @@ package com.salesianostriana.dam.gestionhermandad.controller;
 
 import java.time.LocalDate;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,8 +39,10 @@ public class HermanoProvisionalController {
 	@PostMapping("/registro/submit")
 	public String procesarAltaProvisional(@ModelAttribute("hermanoProvisional") HermanoProvisional hermanoProvisional) {
 		hermanoProvisional.setFechaAlta(LocalDate.now());
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		hermanoProvisional.setPassword(passwordEncoder.encode(hermanoProvisional.getPassword()));
 		hermanoProvisionalServicio.save(hermanoProvisional);
-		return "user/vistaHermanoProvisional";
+		return "/vistaHermanoProvisional";
 	}
 
 	@GetMapping({ "/listarTodosProv" })

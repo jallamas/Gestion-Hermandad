@@ -22,9 +22,37 @@
 <body>
 	<div th:replace="fragments/nav :: header"></div>
 	<div th:replace="fragments/nav :: navAdmin"></div>
-	<div th:replace="fragments/listaHermanosFrag :: listahermanos"></div>
-	
 
+	<div class="row">
+		<div class="col">
+			<h2>Listado de Hermanos Histórico</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Teléfono</th>
+						<th>Móvil</th>
+						<th>Email</th>
+						<th>Fecha de Alta</th>
+						<th>Fecha de Baja</th>
+						<th>Operaciones</th>
+					</tr>
+				</thead>
+				<tr th:each="hermanoHist : ${listaHermanoHist}">
+					<td th:text="${hermanoHist.nombre}"></td>
+					<td th:text="${hermanoHist.apellidos}"></td>
+					<td th:text="${hermanoHist.telefono}"></td>
+					<td th:text="${hermanoHist.movil}"></td>
+					<td th:text="${hermanoHist.email}"></td>
+					<td th:text="${hermanoHist.fechaAlta}"></td>
+					<td th:text="${hermanoHist.fechaBaja}"></td>
+<!-- 					<td><a href="#" th:href="@{/reactivarHnoHist/{id}(id=${hermanoHist.id})}">Histórico</a> -->
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
 
 	<!-- Optional JavaScript -->

@@ -21,4 +21,6 @@ public interface HermanoRepository extends JpaRepository<Hermano, Long> {
 
 	@Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='Hermano' AND SOLICITUDBAJA='true'", nativeQuery = true)
 	List<Hermano> listarSolicitudesBaja();
+
+	Hermano findFirstByUsuario(String usuario);
 }

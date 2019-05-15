@@ -64,7 +64,6 @@ public class Hermano extends HermanoProvisional {
 		this.numHermano = numHermano;
 		this.isAdmin = false;
 		this.solicitaBaja = false;
-
 	}
 
 	/*

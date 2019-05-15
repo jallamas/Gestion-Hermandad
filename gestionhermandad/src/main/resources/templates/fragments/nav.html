@@ -9,7 +9,9 @@
 	<header th:fragment="header"
 		class="jumbotron text-warning text-right mb-0">
 		<h1 class="display-4">Mi Hermandad</h1>
-		<h5>Bienvenido <span sec:authentication="name">Usuario</span></h5>
+		<h5>
+			Bienvenido <span sec:authentication="name">Usuario</span>
+		</h5>
 	</header>
 
 	<nav th:fragment="navAdmin"
@@ -31,7 +33,8 @@
 						<a class="dropdown-item" th:href="@{/listarTodos}">Gestión</a> <a
 							class="dropdown-item" th:href="@{/listarTodosProv}">Altas
 							pendientes</a> <a class="dropdown-item" href="#">Bajas pendientes</a>
-						<a class="dropdown-item" href="#">Renumerar hermanos</a>
+						<a class="dropdown-item" href="#">Renumerar hermanos</a> <a
+							class="dropdown-item" th:href="@{/listarHistoricos}">Histórico</a>
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-warning" href="#"
@@ -46,7 +49,7 @@
 					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Cofradía</a>
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
-						<a class="dropdown-item" href="#">Puestos</a> <a
+						<a class="dropdown-item" th:href="@{/puestos}">Puestos</a> <a
 							class="dropdown-item" href="#">Solicitudes puestos</a> <a
 							class="dropdown-item" href="#">Solicitudes Papeletas</a> <a
 							class="dropdown-item" href="#">Mapa cofradía</a>
@@ -90,34 +93,6 @@
 			</ul>
 		</div>
 	</nav>
-	<div th:fragment="listahermanos" class="row">
-		<div class="col">
-			<h2>Listado de Hermanos</h2>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Nombre</th>
-						<th>Apellidos</th>
-						<th>Teléfono</th>
-						<th>Móvil</th>
-						<th>Email</th>
-						<th>Fecha de Alta</th>
-						<th>Operaciones</th>
-					</tr>
-				</thead>
-				<tr th:each="hermano : ${listaHerm}">
-					<td th:text="${hermano.nombre}"></td>
-					<td th:text="${hermano.apellidos}"></td>
-					<td th:text="${hermano.telefono}"></td>
-					<td th:text="${hermano.movil}"></td>
-					<td th:text="${hermano.email}"></td>
-					<td th:text="${hermano.fechaAlta}"></td>
-					<td><a href="#" th:href="@{/editarHno/{id}(id=${hermano.id})}">Editar</a>
-						| <a href="#" th:href="@{/borrarHno/{id}(id=${hermano.id})}">Histórico</a>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
+
 </body>
 </html>
