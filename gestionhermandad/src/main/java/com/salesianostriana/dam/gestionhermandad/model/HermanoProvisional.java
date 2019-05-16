@@ -78,9 +78,30 @@ public class HermanoProvisional {
 	 * @param password        Contraseña para el área de gestión.
 	 * @param fechaAlta       Fecha de confirmación del alta en la Hermandad.
 	 */
-	public HermanoProvisional(String nombre, String apellidos, String telefono, String movil, String direccion,
-			String provincia, String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento,
-			String email, String usuario, String password, LocalDate fechaAlta) {
+//	public HermanoProvisional(String nombre, String apellidos, String telefono, String movil, String direccion,
+//			String provincia, String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento,
+//			String email, String usuario, String password, LocalDate fechaAlta) {
+//		this.nombre = nombre;
+//		this.apellidos = apellidos;
+//		this.telefono = telefono;
+//		this.movil = movil;
+//		this.direccion = direccion;
+//		this.provincia = provincia;
+//		this.localidad = localidad;
+//		this.codigoPostal = codigoPostal;
+//		this.pais = pais;
+//		this.fechaNacimiento = fechaNacimiento;
+//		this.email = email;
+//		this.usuario = usuario;
+//		this.password = password;
+//		this.fechaAlta = fechaAlta;
+//	}
+
+	public HermanoProvisional(long numExpediente, String nombre, String apellidos, String telefono, String movil,
+			String direccion, String provincia, String localidad, String codigoPostal, String pais,
+			LocalDate fechaNacimiento, String email, String usuario, String password, LocalDate fechaAlta) {
+		super();
+		this.numExpediente = numExpediente;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.telefono = telefono;

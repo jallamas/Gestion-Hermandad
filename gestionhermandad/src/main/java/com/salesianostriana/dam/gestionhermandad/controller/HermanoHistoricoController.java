@@ -6,6 +6,7 @@ package com.salesianostriana.dam.gestionhermandad.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.salesianostriana.dam.gestionhermandad.services.HermanoHistoricoServicio;
 
@@ -30,5 +31,11 @@ public class HermanoHistoricoController {
 	public String listarTodos(Model model) {
 		model.addAttribute("listaHermanoHist", hermanoHistoricoServicio.findAll());
 		return "admin/listaHermanosHist";
+	}
+	
+	@GetMapping("/reactivarHnoHist/{id}")
+	public String pasarHnoHist(@PathVariable("id") long id) {
+		hermanoHistoricoServicio.reactivarHermanoHistorico(hermanoHistoricoServicio.findById(id));
+		return "redirect:/listarHistoricos";
 	}
 }

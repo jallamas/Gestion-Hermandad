@@ -37,6 +37,7 @@ public class Hermano extends HermanoProvisional {
 	private boolean solicitaBaja;
 
 	/**
+	 * @param numExpediente   Número del expediente
 	 * @param nombre          Nombre del hermano
 	 * @param apellidos       Apellidos del hermano.
 	 * @param telefono        Teléfono fijo.
@@ -56,16 +57,24 @@ public class Hermano extends HermanoProvisional {
 	 * @param isAdmin         Booleano que indica si es administrador de la
 	 *                        aplicación.
 	 */
-	public Hermano(String nombre, String apellidos, String telefono, String movil, String direccion, String provincia,
-			String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento, String email, String usuario,
-			String password, LocalDate fechaAlta, int numHermano) {
-		super(nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais, fechaNacimiento,
-				email, usuario, password, fechaAlta);
+	public Hermano(long numExpediente, String nombre, String apellidos, String telefono, String movil, String direccion,
+			String provincia, String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento,
+			String email, String usuario, String password, LocalDate fechaAlta, int numHermano) {
+		super(numExpediente, nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais,
+				fechaNacimiento, email, usuario, password, fechaAlta);
 		this.numHermano = numHermano;
 		this.isAdmin = false;
 		this.solicitaBaja = false;
 	}
 
+	public Hermano(long numExpediente, String nombre, String apellidos, String telefono, String movil, String direccion,
+			String provincia, String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento,
+			String email, String usuario, String password, LocalDate fechaAlta) {
+		super(numExpediente, nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais,
+				fechaNacimiento, email, usuario, password, fechaAlta);
+		this.isAdmin = false;
+		this.solicitaBaja = false;
+	}
 	/*
 	 * public Hermano(HermanoProvisional hermanoProv, int numHermano) {
 	 * this.numHermano = numHermano; this.isAdmin = false; }

@@ -16,11 +16,13 @@ import com.salesianostriana.dam.gestionhermandad.model.Hermano;
  */
 public interface HermanoRepository extends JpaRepository<Hermano, Long> {
 
-	@Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='Hermano' ORDER BY APELLIDOS", nativeQuery = true)
+	//@Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='Hermano' ORDER BY APELLIDOS", nativeQuery = true)
+	@Query("select h from Hermano h where TYPE(h)=Hermano order by h.apellidos")
 	List<Hermano> findAll();
 
-	@Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='Hermano' AND SOLICITUDBAJA='true'", nativeQuery = true)
-	List<Hermano> listarSolicitudesBaja();
+	//@Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='Hermano' AND SOLICITUDBAJA='true'", nativeQuery = true)
+	//@Query("select h from Hermano h where TYPE(h)=Hermano and h.solicitaBaja=true")
+	List<Hermano> findBySolicitaBajaTrue();
 
 	Hermano findFirstByUsuario(String usuario);
 }

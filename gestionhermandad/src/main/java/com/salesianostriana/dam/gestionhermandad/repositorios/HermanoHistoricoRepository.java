@@ -16,6 +16,8 @@ import com.salesianostriana.dam.gestionhermandad.model.HermanoHistorico;
  */
 public interface HermanoHistoricoRepository extends JpaRepository<HermanoHistorico, Long> {
 
-	@Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='HermanoHistorico'", nativeQuery = true)
+	// @Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='HermanoHistorico'",
+	// nativeQuery = true)
+	@Query("select hh from HermanoHistorico hh where TYPE(hh)=HermanoHistorico order by hh.apellidos")
 	List<HermanoHistorico> findAll();
 }

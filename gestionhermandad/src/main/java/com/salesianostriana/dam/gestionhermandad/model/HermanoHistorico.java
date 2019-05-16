@@ -55,11 +55,21 @@ public class HermanoHistorico extends Hermano {
 	 *                        aplicación.
 	 * @param fechaBaja       Fecha en la que causó baja en la Hermandad.
 	 */
-	public HermanoHistorico(String nombre, String apellidos, String telefono, String movil, String direccion,
-			String provincia, String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento,
-			String email, String usuario, String password, LocalDate fechaAlta, int numHermano, LocalDate fechaBaja) {
-		super(nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais, fechaNacimiento,
-				email, usuario, password, fechaAlta, numHermano);
+	public HermanoHistorico(long numExpediente, String nombre, String apellidos, String telefono, String movil,
+			String direccion, String provincia, String localidad, String codigoPostal, String pais,
+			LocalDate fechaNacimiento, String email, String usuario, String password, LocalDate fechaAlta,
+			int numHermano, LocalDate fechaBaja) {
+		super(numExpediente, nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais,
+				fechaNacimiento, email, usuario, password, fechaAlta, numHermano);
+		this.fechaBaja = fechaBaja;
+	}
+	
+	public HermanoHistorico(long numExpediente, String nombre, String apellidos, String telefono, String movil,
+			String direccion, String provincia, String localidad, String codigoPostal, String pais,
+			LocalDate fechaNacimiento, String email, String usuario, String password, LocalDate fechaAlta,
+			 LocalDate fechaBaja) {
+		super(numExpediente, nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais,
+				fechaNacimiento, email, usuario, password, fechaAlta);
 		this.fechaBaja = fechaBaja;
 	}
 

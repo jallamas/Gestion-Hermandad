@@ -28,18 +28,18 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 	protected HermanoRepository hermanoRepositorio;
 
 	public HermanoHistorico pasarHermanoHistorico(Hermano hermano) {
-		HermanoHistorico hermanoHistorico = new HermanoHistorico(hermano.getNombre(), hermano.getApellidos(),
-				hermano.getTelefono(), hermano.getMovil(), hermano.getDireccion(), hermano.getProvincia(),
-				hermano.getLocalidad(), hermano.getCodigoPostal(), hermano.getPais(), hermano.getFechaNacimiento(),
-				hermano.getEmail(), hermano.getUsuario(), hermano.getPassword(), hermano.getFechaAlta(),
-				hermano.getNumHermano(), LocalDate.now());
+		HermanoHistorico hermanoHistorico = new HermanoHistorico(hermano.getNumExpediente(), hermano.getNombre(),
+				hermano.getApellidos(), hermano.getTelefono(), hermano.getMovil(), hermano.getDireccion(),
+				hermano.getProvincia(), hermano.getLocalidad(), hermano.getCodigoPostal(), hermano.getPais(),
+				hermano.getFechaNacimiento(), hermano.getEmail(), hermano.getUsuario(), hermano.getPassword(),
+				hermano.getFechaAlta(), LocalDate.now());
 		hermanoServicio.deleteById(hermano.getId());
 		hermanoHistoricoServicio.save(hermanoHistorico);
 		return hermanoHistorico;
 	}
 
 	public List<Hermano> listarSolicitudesBaja() {
-		return repositorio.listarSolicitudesBaja();
+		return repositorio.findBySolicitaBajaTrue();
 	}
 
 	public Hermano buscarPorUsuario(String usuario) {
