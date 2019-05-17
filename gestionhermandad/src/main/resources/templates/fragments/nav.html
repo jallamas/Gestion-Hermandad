@@ -33,7 +33,7 @@
 						<a class="dropdown-item" th:href="@{/listarTodos}">Gestión</a> <a
 							class="dropdown-item" th:href="@{/listarTodosProv}">Altas
 							pendientes</a> <a class="dropdown-item" href="#">Bajas pendientes</a>
-						<a class="dropdown-item" href="#">Renumerar hermanos</a>
+						<a class="dropdown-item" th:href="${@hermanoServicio.renumerarHermanos()}">Renumerar hermanos</a>
 						<a class="dropdown-item" th:href="@{/listarHistoricos}">Histórico</a>
 					</div></li>
 				<li class="nav-item dropdown"><a

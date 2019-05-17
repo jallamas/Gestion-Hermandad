@@ -29,6 +29,9 @@ public interface HermanoRepository extends JpaRepository<Hermano, Long> {
 	// h.solicitaBaja=true")
 	List<Hermano> findBySolicitaBajaTrue();
 
+	@Query("select h from Hermano h where TYPE(h)=Hermano order by h.fechaAlta")
+	List<Hermano> findByFechaAlta();
+	
 	Hermano findFirstByUsuario(String usuario);
 
 	@Query("select h from Hermano h where TYPE(h)=Hermano and h.fechaNacimiento <= fechaReferencia order by h.apellidos")

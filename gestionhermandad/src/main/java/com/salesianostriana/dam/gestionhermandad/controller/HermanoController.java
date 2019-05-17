@@ -73,7 +73,7 @@ public class HermanoController {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
 		return "redirect:/listarTodos";
 	}
-
+	
 	@GetMapping("/buscar")
 	public String listarFiltrado(Model model) {
 		model.addAttribute("listaHerm", hermanoServicio.findAll());

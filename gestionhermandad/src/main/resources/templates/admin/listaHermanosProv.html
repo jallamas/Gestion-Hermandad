@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es"
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <title>Hermanos provisionales</title>
 <!-- Required meta tags -->
@@ -44,8 +44,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 					<td th:text="${hermanoProvisional.movil}"></td>
 					<td th:text="${hermanoProvisional.email}"></td>
 					<td th:text="${hermanoProvisional.fechaAlta}"></td>
-					<td><a th:href="@{/validar/{id}(id=${hermanoProvisional.id})}">Validar</a>
-						| <a th:href="@{/borrar/{id}(id=${hermanoProvisional.id})}">Borrar</a>
+					<td><a th:href="@{/validar/{id}(id=${hermanoProvisional.id})}" onclick="return confirm('¿SEGURO QUE DESEA VALIDAR ESTA SOLICITUD?');">Validar</a>
+						| <a th:href="@{/borrar/{id}(id=${hermanoProvisional.id})}" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR ESTA SOLICITUD?');">Borrar</a>
 					</td>
 				</tr>
 			</table>
@@ -55,6 +55,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 
 	<!-- Optional JavaScript -->
+
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
