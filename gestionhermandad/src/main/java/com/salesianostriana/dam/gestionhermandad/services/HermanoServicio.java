@@ -57,6 +57,10 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 		LocalDate fechaReferencia = LocalDate.now().minusYears(18);
 		return hermanoRepositorio.findByFechaNacimientoBefore(fechaReferencia);
 	}
+	
+	public int obtenerNuevoNumHermano() {
+		return repositorio.obtenerNuevoNumHermano()+1;
+	}
 
 	public Hermano buscarPorUsuario(String usuario) {
 		return repositorio.findFirstByUsuario(usuario);

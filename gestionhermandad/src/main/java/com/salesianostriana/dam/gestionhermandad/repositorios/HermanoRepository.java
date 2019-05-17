@@ -18,22 +18,29 @@ import com.salesianostriana.dam.gestionhermandad.model.Hermano;
  */
 public interface HermanoRepository extends JpaRepository<Hermano, Long> {
 
-	// @Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='Hermano' ORDER BY
-	// APELLIDOS", nativeQuery = true)
 	@Query("select h from Hermano h where TYPE(h)=Hermano order by h.apellidos")
 	List<Hermano> findAll();
 
-	// @Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='Hermano' AND
-	// SOLICITUDBAJA='true'", nativeQuery = true)
-	// @Query("select h from Hermano h where TYPE(h)=Hermano and
-	// h.solicitaBaja=true")
 	List<Hermano> findBySolicitaBajaTrue();
 
 	@Query("select h from Hermano h where TYPE(h)=Hermano order by h.fechaAlta")
 	List<Hermano> findByFechaAlta();
-	
+
 	Hermano findFirstByUsuario(String usuario);
 
+	/**
+	 * Método que pasándole una fecha, nos obtiene todos los hermanos con fecha igual o anterior. 
+	 * @param fechaReferencia Fecha 
+	 * @return
+	 */
 	@Query("select h from Hermano h where TYPE(h)=Hermano and h.fechaNacimiento <= fechaReferencia order by h.apellidos")
 	List<Hermano> findByFechaNacimientoBefore(@Param("fechaReferencia") LocalDate fechaReferencia);
+
+	/**
+	 * Consulta que obtiene el número de hermanos activos
+	 * 
+	 * @return
+	 */
+	@Query("select count(h) from Hermano h where TYPE(h)=Hermano")
+	int obtenerNuevoNumHermano();
 }

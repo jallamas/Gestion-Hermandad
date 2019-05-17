@@ -25,11 +25,12 @@ public class HermanoProvisionalServicio extends ServicioBase<HermanoProvisional,
 	protected HermanoProvisionalRepository hermanoProvisionalRepositorio;
 
 	public Hermano validarHermanoProvisional(HermanoProvisional hermanoProv) {
-		Hermano hermano = new Hermano(hermanoProv.getNumExpediente(),hermanoProv.getNombre(), hermanoProv.getApellidos(), hermanoProv.getTelefono(),
-				hermanoProv.getMovil(), hermanoProv.getDireccion(), hermanoProv.getProvincia(),
-				hermanoProv.getLocalidad(), hermanoProv.getCodigoPostal(), hermanoProv.getPais(),
-				hermanoProv.getFechaNacimiento(), hermanoProv.getEmail(), hermanoProv.getUsuario(),
-				hermanoProv.getPassword(), hermanoProv.getFechaAlta(), 1);
+		Hermano hermano = new Hermano(hermanoProv.getNumExpediente(), hermanoProv.getNombre(),
+				hermanoProv.getApellidos(), hermanoProv.getTelefono(), hermanoProv.getMovil(),
+				hermanoProv.getDireccion(), hermanoProv.getProvincia(), hermanoProv.getLocalidad(),
+				hermanoProv.getCodigoPostal(), hermanoProv.getPais(), hermanoProv.getFechaNacimiento(),
+				hermanoProv.getEmail(), hermanoProv.getUsuario(), hermanoProv.getPassword(), hermanoProv.getFechaAlta(),
+				hermanoServicio.obtenerNuevoNumHermano());
 		hermanoProvisionalServicio.deleteById(hermanoProv.getId());
 		hermanoServicio.save(hermano);
 		return hermano;
