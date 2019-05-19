@@ -3,6 +3,10 @@
  */
 package com.salesianostriana.dam.gestionhermandad.controller;
 
+import java.time.LocalDate;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,7 +50,15 @@ public class HermanoController {
 	@GetMapping("/nuevoHno")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("hermano", new Hermano());
-		return "hermano_form";
+		return "admin/hermano_form_admin";
+	}
+	@PostMapping("/nuevoHno/submit")
+	public String procesarAlta(@ModelAttribute("hermano") Hermano hermano) {
+		hermano.setFechaAlta(LocalDate.now());
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		hermano.setPassword(passwordEncoder.encode(hermano.getPassword()));
+		hermanoServicio.save(hermano);
+		return "redirect:/listarTodos";
 	}
 
 	@GetMapping("/editarHno/{id}")
@@ -97,4 +109,5 @@ public class HermanoController {
 //		}
 //		return "admin/adminClientesListar";
 //	}
+	
 }

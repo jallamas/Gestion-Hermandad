@@ -22,8 +22,13 @@
 <body>
 	<div th:replace="fragments/nav :: header"></div>
 	<div th:replace="fragments/nav :: navAdmin"></div>
-	<div th:replace="fragments/listaHermanosFrag :: listahermanos"></div>
+	<ul class="navbar-nav my-2 my-lg-0">
+		<li><a class="nav-link nav-outline-warning mr-sm-2"
+			th:href="@{/nuevoHno}">Añadir hermano</a></li>
+	</ul>
 	
+	<div th:replace="fragments/listaHermanosFrag :: listahermanos"></div>
+
 
 
 

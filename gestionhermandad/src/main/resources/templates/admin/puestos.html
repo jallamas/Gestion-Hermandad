@@ -22,7 +22,10 @@
 <body>
 	<div th:replace="fragments/nav :: header"></div>
 	<div th:replace="fragments/nav :: navAdmin"></div>
-
+	<ul class="navbar-nav my-2 my-lg-0">
+		<li><a class="nav-link nav-outline-warning mr-sm-2"
+			th:href="@{/nuevopuesto}">Añadir puesto</a></li>
+	</ul>
 	<div class="row">
 		<div class="col">
 			<h2>Puestos en la cofradía</h2>
@@ -45,8 +48,9 @@
 					<td th:text="${puesto.precio}"></td>
 					<td th:text="${puesto.paso}"></td>
 					<td th:text="${puesto.esDestacado}"></td>
-					<td><a href="#" th:href="@{/editarpuesto/{id}(id=${puesto.id})}">Editar</a>
-						| <a href="#" th:href="@{/borrarpuesto/{id}(id=${puesto.id})}">Borrar</a>
+					<td><a href="#"
+						th:href="@{/editarpuesto/{id}(id=${puesto.id})}">Editar</a> | <a
+						href="#" th:href="@{/borrarpuesto/{id}(id=${puesto.id})}">Borrar</a>
 					</td>
 				</tr>
 			</table>

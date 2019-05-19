@@ -9,7 +9,7 @@
 	<div th:fragment="listahermanos" class="row">
 		<div class="col">
 			<h2>Listado de Hermanos</h2>
-			<table class="table table-striped">
+			<table id="hermanosTabla" class="table table-striped">
 				<thead>
 					<tr>
 						<th>Nombre</th>
@@ -29,7 +29,8 @@
 					<td th:text="${hermano.email}"></td>
 					<td th:text="${hermano.fechaAlta}"></td>
 					<td><a href="#" th:href="@{/editarHno/{id}(id=${hermano.id})}">Editar</a>
-						| <a href="#" th:href="@{/pasarHnoHist/{id}(id=${hermano.id})}"onclick="return confirm('¿SEGURO QUE DESEA PASAR ESTE HERMANO AL HISTÓRICO?');">Histórico</a>
+						| <a href="#" th:href="@{/pasarHnoHist/{id}(id=${hermano.id})}"
+						onclick="return confirm('¿SEGURO QUE DESEA PASAR ESTE HERMANO AL HISTÓRICO?');">Histórico</a>
 					</td>
 				</tr>
 			</table>

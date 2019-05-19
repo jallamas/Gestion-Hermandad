@@ -1,16 +1,40 @@
-header.jumbotron{
-    background-image: url(../img/header.jpg);
-    background-size:cover;
+header.jumbotron {
+	background-image: url(../img/header.jpg);
+	background-size: cover;
 }
-.bg-info{
-    background-color: blueviolet !important;
+footer{
+	font-family: Arial;
+	text-align: center;
 }
-.carousel-inner img{
-    width: 100%;
+.bg-info {
+	background-color: white !important;
+	text-align: center;
+	font-size: 12px;
 }
-.rounded{
-    border-radius: 2% !important;
+
+.rounded {
+	border-radius: 2% !important;
 }
-form input{
-	width:250px;
+
+form input {
+	width: 250px;
+}
+.card-img-top {
+	width: 64px;
+	height: 70px;
+}
+fieldset{
+	border: 1px solid black;
+	margin:1% 0;
+	padding:2%;
+}
+.loginform{
+	margin: 0 auto;
+	padding:1%;
+	width: 30%;
+}
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
 }

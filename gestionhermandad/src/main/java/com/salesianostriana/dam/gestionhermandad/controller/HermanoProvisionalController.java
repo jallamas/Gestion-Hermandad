@@ -25,7 +25,7 @@ import com.salesianostriana.dam.gestionhermandad.services.HermanoProvisionalServ
 public class HermanoProvisionalController {
 
 	private HermanoProvisionalServicio hermanoProvisionalServicio;
-
+	
 	public HermanoProvisionalController(HermanoProvisionalServicio hermanoprovisionalservicio) {
 		this.hermanoProvisionalServicio = hermanoprovisionalservicio;
 	}
