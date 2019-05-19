@@ -41,6 +41,6 @@ public interface HermanoRepository extends JpaRepository<Hermano, Long> {
 	 * 
 	 * @return
 	 */
-	@Query("select count(h) from Hermano h where TYPE(h)=Hermano")
+	@Query("select max(h.numHermano) from Hermano h where TYPE(h)=Hermano")
 	int obtenerNuevoNumHermano();
 }
