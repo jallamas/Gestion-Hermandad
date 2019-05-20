@@ -18,19 +18,19 @@
 <!--Mis estilos-->
 <link rel="stylesheet" href="../../static/css/styles.css"
 	th:href="@{/css/styles.css}" />
+<!--Datatables-->
+
 </head>
+
 <body>
 	<div th:replace="fragments/nav :: header"></div>
 	<div th:replace="fragments/nav :: navAdmin"></div>
 	<ul class="navbar-nav my-2 my-lg-0">
 		<li><a class="nav-link nav-outline-warning mr-sm-2"
-			th:href="@{/nuevoHno}">Añadir hermano</a></li>
+			th:href="@{/admin/nuevoHno}">Añadir hermano</a></li>
 	</ul>
-	
+
 	<div th:replace="fragments/listaHermanosFrag :: listahermanos"></div>
-
-
-
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

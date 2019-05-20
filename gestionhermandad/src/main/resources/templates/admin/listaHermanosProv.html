@@ -44,8 +44,8 @@
 					<td th:text="${hermanoProvisional.movil}"></td>
 					<td th:text="${hermanoProvisional.email}"></td>
 					<td th:text="${hermanoProvisional.fechaAlta}"></td>
-					<td><a th:href="@{/validar/{id}(id=${hermanoProvisional.id})}" onclick="return confirm('¿SEGURO QUE DESEA VALIDAR ESTA SOLICITUD?');">Validar</a>
-						| <a th:href="@{/borrar/{id}(id=${hermanoProvisional.id})}" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR ESTA SOLICITUD?');">Borrar</a>
+					<td><a th:href="@{/admin/validar/{id}(id=${hermanoProvisional.id})}" onclick="return confirm('¿SEGURO QUE DESEA VALIDAR ESTA SOLICITUD?');">Validar</a>
+						| <a th:href="@{/admin/borrar/{id}(id=${hermanoProvisional.id})}" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR ESTA SOLICITUD?');">Borrar</a>
 					</td>
 				</tr>
 			</table>

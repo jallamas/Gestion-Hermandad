@@ -24,7 +24,7 @@
 	<div th:insert="fragments/nav :: navAdmin"></div>
 
 	<form
-		th:action="${hermano.id != 0} ? @{/editarHno/submit} : @{/nuevoHno/submit}"
+		th:action="${hermano.id != 0} ? @{/admin/editarHno/submit} : @{/admin/nuevoHno/submit}"
 		th:object="${hermano}" method="post">
 		<input th:if="${hermano.id != 0}" type="hidden" name="id"
 			th:field="*{id}" />
@@ -32,7 +32,7 @@
 			<tr>
 				<td><label for="numHermano">Número de hermano</label></td>
 				<td><input readonly type="number" th:field="*{numHermano}"
-					placeholder="Se sasignará automáticamente" /></td>
+					placeholder="Se asignará automáticamente" /></td>
 			</tr>
 			<tr>
 				<td><label for="nombre">Nombre</label></td>

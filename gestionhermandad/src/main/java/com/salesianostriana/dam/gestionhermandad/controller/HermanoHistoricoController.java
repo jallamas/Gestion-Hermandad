@@ -27,13 +27,13 @@ public class HermanoHistoricoController {
 		this.hermanoHistoricoServicio = hermanoHistoricoServicio;
 	}
 	
-	@GetMapping({ "/listarHistoricos" })
+	@GetMapping({ "/admin/listarHistoricos" })
 	public String listarTodos(Model model) {
 		model.addAttribute("listaHermanoHist", hermanoHistoricoServicio.findAll());
 		return "admin/listaHermanosHist";
 	}
 	
-	@GetMapping("/reactivarHnoHist/{id}")
+	@GetMapping("admin/reactivarHnoHist/{id}")
 	public String pasarHnoHist(@PathVariable("id") long id) {
 		hermanoHistoricoServicio.reactivarHermanoHistorico(hermanoHistoricoServicio.findById(id));
 		return "redirect:/listarHistoricos";

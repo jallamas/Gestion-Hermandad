@@ -26,7 +26,7 @@ public class GestionHermandadApplication {
 			hno.setNombre("José Antonio");
 			hno.setApellidos("Llamas Álvarez");
 			hno.setUsuario("admin");
-			hno.setPassword(passwordEncoder.encode("1234"));
+			hno.setPassword(passwordEncoder.encode("admin"));
 
 			servicio.save(hno);
 

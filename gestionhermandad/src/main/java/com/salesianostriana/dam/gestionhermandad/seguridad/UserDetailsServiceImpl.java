@@ -15,7 +15,7 @@ import com.salesianostriana.dam.gestionhermandad.model.Hermano;
 import com.salesianostriana.dam.gestionhermandad.services.HermanoServicio;
 
 /**
- * @author usuarioç
+ * @author José Antonio Llamas Álvarez
  *
  */
 @Service("userDetailsService")
@@ -40,8 +40,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			userBuilder.password(hermano.getPassword());
 			if (hermano.isAdmin()) {
 				// Este caso indica que un ADMIN también puede hacer todo lo que hace un USER
-				userBuilder.authorities(new SimpleGrantedAuthority("ROLE_USER"),
-						new SimpleGrantedAuthority("ROLE_ADMIN"));
+				userBuilder.authorities(new SimpleGrantedAuthority("ROLE_ADMIN"));
 			} else {
 				userBuilder.authorities(new SimpleGrantedAuthority("ROLE_USER"));
 			}

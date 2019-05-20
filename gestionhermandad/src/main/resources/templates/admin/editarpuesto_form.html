@@ -23,7 +23,7 @@
 
 	<h3>Datos del puesto en la cofradía</h3>
 
-	<form th:action="@{/editarpuesto/submit}" th:object="${puesto}"
+	<form th:action="@{/admin/editarpuesto/submit}" th:object="${puesto}"
 		method="post">
 		<input th:if="${puesto.id != 0}" type="hidden" name="id"
 			th:field="*{id}" />

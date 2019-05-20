@@ -24,7 +24,7 @@
 	<div th:replace="fragments/nav :: navAdmin"></div>
 	<ul class="navbar-nav my-2 my-lg-0">
 		<li><a class="nav-link nav-outline-warning mr-sm-2"
-			th:href="@{/nuevopuesto}">Añadir puesto</a></li>
+			th:href="@{/admin/nuevopuesto}">Añadir puesto</a></li>
 	</ul>
 	<div class="row">
 		<div class="col">
@@ -49,8 +49,8 @@
 					<td th:text="${puesto.paso}"></td>
 					<td th:text="${puesto.esDestacado}"></td>
 					<td><a href="#"
-						th:href="@{/editarpuesto/{id}(id=${puesto.id})}">Editar</a> | <a
-						href="#" th:href="@{/borrarpuesto/{id}(id=${puesto.id})}">Borrar</a>
+						th:href="@{/admin/editarpuesto/{id}(id=${puesto.id})}">Editar</a> | <a
+						href="#" th:href="@{/admin/borrarpuesto/{id}(id=${puesto.id})}">Borrar</a>
 					</td>
 				</tr>
 			</table>

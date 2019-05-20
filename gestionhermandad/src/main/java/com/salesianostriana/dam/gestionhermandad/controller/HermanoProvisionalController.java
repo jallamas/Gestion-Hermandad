@@ -45,19 +45,19 @@ public class HermanoProvisionalController {
 		return "/vistaHermanoProvisional";
 	}
 
-	@GetMapping({ "/listarTodosProv" })
+	@GetMapping({ "/admin/listarTodosProv" })
 	public String listarTodos(Model model) {
 		model.addAttribute("listaProv", hermanoProvisionalServicio.findAll());
 		return "admin/listaHermanosProv";
 	}
 
-	@GetMapping("/validar/{id}")
+	@GetMapping("/admin/validar/{id}")
 	public String validar(@PathVariable("id") long id) {
 		hermanoProvisionalServicio.validarHermanoProvisional(hermanoProvisionalServicio.findById(id));
 		return "redirect:/listarTodosProv";
 	}
 
-	@GetMapping("/borrar/{id}")
+	@GetMapping("/admin/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
 		hermanoProvisionalServicio.deleteById(id);
 		return "redirect:/listarTodosProv";

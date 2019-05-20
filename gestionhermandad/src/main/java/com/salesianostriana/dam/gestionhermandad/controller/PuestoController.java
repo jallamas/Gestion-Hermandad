@@ -30,25 +30,25 @@ public class PuestoController {
 		this.puestoServicio = puestoServicio;
 	}
 
-	@GetMapping("/nuevopuesto")
+	@GetMapping("/admin/nuevopuesto")
 	public String mostrarNuevoPuestoForm(Model model) {
 		model.addAttribute("puesto", new Puesto());
 		return "admin/puesto_form";
 	}
 
-	@PostMapping("/nuevopuesto/submit")
+	@PostMapping("/admin/nuevopuesto/submit")
 	public String procesarNuevoPuesto(@ModelAttribute("puesto") Puesto puesto) {
 		puestoServicio.save(puesto);
 		return "redirect:/puestos";
 	}
 
-	@GetMapping("/puestos")
+	@GetMapping("/admin/puestos")
 	public String listarPuestos(Model model) {
 		model.addAttribute("listaPuestos", puestoServicio.findAll());
 		return "admin/puestos";
 	}
 
-	@GetMapping("/editarpuesto/{id}")
+	@GetMapping("/admin/editarpuesto/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 		Puesto puestoEditar = puestoServicio.findById(id);
 		model.addAttribute("puesto", puestoEditar);
@@ -58,13 +58,13 @@ public class PuestoController {
 	/**
 	 * Método que procesa la respuesta del formulario al editar
 	 */
-	@PostMapping("/editarpuesto/submit")
+	@PostMapping("/admin/editarpuesto/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("puesto") Puesto puesto) {
 		puestoServicio.edit(puesto);
 		return "redirect:/puestos";
 	}
 
-	@GetMapping("/borrarpuesto/{id}")
+	@GetMapping("/admin/borrarpuesto/{id}")
 	public String borrarpuesto(@PathVariable("id") long id) {
 		puestoServicio.deleteById(id);
 		return "redirect:/puestos";

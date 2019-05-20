@@ -29,15 +29,18 @@ public interface HermanoRepository extends JpaRepository<Hermano, Long> {
 	Hermano findFirstByUsuario(String usuario);
 
 	/**
-	 * Método que pasándole una fecha, nos obtiene todos los hermanos con fecha igual o anterior. 
-	 * @param fechaReferencia Fecha 
+	 * Método que pasándole una fecha, nos obtiene todos los hermanos con fecha
+	 * igual o anterior.
+	 * 
+	 * @param fechaReferencia Fecha
 	 * @return
 	 */
 	@Query("select h from Hermano h where TYPE(h)=Hermano and h.fechaNacimiento <= fechaReferencia order by h.apellidos")
 	List<Hermano> findByFechaNacimientoBefore(@Param("fechaReferencia") LocalDate fechaReferencia);
 
 	/**
-	 * Consulta que obtiene el número de hermanos activos
+	 * Consulta que obtiene el valor máximo del número de hermano de entre los
+	 * activos
 	 * 
 	 * @return
 	 */

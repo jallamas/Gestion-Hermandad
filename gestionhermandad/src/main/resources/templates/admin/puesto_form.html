@@ -26,7 +26,7 @@
 <!-- 	<form th:action="@{/nuevopuesto/submit}" th:object="${puesto}" -->
 <!-- 		method="post"> -->
 		<form
-		th:action="${puesto.id != 0} ? @{/editarpuesto/submit} : @{/nuevopuesto/submit}"
+		th:action="${puesto.id != 0} ? @{/admin/editarpuesto/submit} : @{/admin/nuevopuesto/submit}"
 		th:object="${puesto}" method="post">
 		<input th:if="${puesto.id != 0}" type="hidden" name="id"
 			th:field="*{id}" />

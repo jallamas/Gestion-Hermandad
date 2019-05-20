@@ -18,7 +18,7 @@ import com.salesianostriana.dam.gestionhermandad.model.Hermano;
 import com.salesianostriana.dam.gestionhermandad.services.HermanoServicio;
 
 /**
- * @author usuarioç
+ * @author José Antonio Llamas Álvarez
  *
  */
 @Controller
@@ -30,38 +30,27 @@ public class HermanoController {
 		this.hermanoServicio = hermanoServicio;
 	}
 
-//	@GetMapping("/login")
-//	public String mostrarlogin(Model model) {
-//		model.addAttribute("hermano", new Hermano());
-//		return "login";
-//	}
-//
-//	@PostMapping("/login/submit")
-//	public String procesarlogin(Model model) {
-//		return "login";
-//	}
-
-	@GetMapping({ "/listarTodos" })
+	@GetMapping("/admin/listarTodos")
 	public String listarTodos(Model model) {
 		model.addAttribute("listaHerm", hermanoServicio.findAll());
 		return "admin/listaHermanos";
 	}
 
-	@GetMapping("/nuevoHno")
+	@GetMapping("/admin/nuevoHno")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("hermano", new Hermano());
 		return "admin/hermano_form_admin";
 	}
-	@PostMapping("/nuevoHno/submit")
+	@PostMapping("/admin/nuevoHno/submit")
 	public String procesarAlta(@ModelAttribute("hermano") Hermano hermano) {
 		hermano.setFechaAlta(LocalDate.now());
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		hermano.setPassword(passwordEncoder.encode(hermano.getPassword()));
 		hermanoServicio.save(hermano);
-		return "redirect:/listarTodos";
+		return "redirect:/admin/listarTodos";
 	}
 
-	@GetMapping("/editarHno/{id}")
+	@GetMapping("/admin/editarHno/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 
 		Hermano hnoEditar = hermanoServicio.findById(id);
@@ -77,13 +66,13 @@ public class HermanoController {
 //		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 //		hno.setPassword(passwordEncoder.encode(hno.getPassword()));
 		hermanoServicio.edit(hno);
-		return "redirect:/listarTodos";
+		return "redirect:/admin/listarTodos";
 	}
 
-	@GetMapping("/pasarHnoHist/{id}")
+	@GetMapping("/admin/pasarHnoHist/{id}")
 	public String pasarHnoHist(@PathVariable("id") long id) {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
-		return "redirect:/listarTodos";
+		return "redirect:/admin/listarTodos";
 	}
 	
 	@GetMapping("/buscar")
@@ -109,5 +98,6 @@ public class HermanoController {
 //		}
 //		return "admin/adminClientesListar";
 //	}
+
 	
 }

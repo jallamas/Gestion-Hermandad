@@ -21,19 +21,23 @@
 						<th>Operaciones</th>
 					</tr>
 				</thead>
-				<tr th:each="hermano : ${listaHerm}">
-					<td th:text="${hermano.nombre}"></td>
-					<td th:text="${hermano.apellidos}"></td>
-					<td th:text="${hermano.telefono}"></td>
-					<td th:text="${hermano.movil}"></td>
-					<td th:text="${hermano.email}"></td>
-					<td th:text="${hermano.fechaAlta}"></td>
-					<td><a href="#" th:href="@{/editarHno/{id}(id=${hermano.id})}">Editar</a>
-						| <a href="#" th:href="@{/pasarHnoHist/{id}(id=${hermano.id})}"
-						onclick="return confirm('¿SEGURO QUE DESEA PASAR ESTE HERMANO AL HISTÓRICO?');">Histórico</a>
-					</td>
-				</tr>
+				<tbody>
+					<tr th:each="hermano : ${listaHerm}">
+						<td th:text="${hermano.nombre}"></td>
+						<td th:text="${hermano.apellidos}"></td>
+						<td th:text="${hermano.telefono}"></td>
+						<td th:text="${hermano.movil}"></td>
+						<td th:text="${hermano.email}"></td>
+						<td th:text="${hermano.fechaAlta}"></td>
+						<td><a href="#"
+							th:href="@{/admin/editarHno/{id}(id=${hermano.id})}">Editar</a> | <a
+							href="#" th:href="@{/admin/pasarHnoHist/{id}(id=${hermano.id})}"
+							onclick="return confirm('¿SEGURO QUE DESEA PASAR ESTE HERMANO AL HISTÓRICO?');">Histórico</a>
+						</td>
+					</tr>
+				</tbody>
 			</table>
+
 		</div>
 	</div>
 </body>

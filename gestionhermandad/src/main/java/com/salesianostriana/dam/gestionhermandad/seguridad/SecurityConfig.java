@@ -16,8 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * @author jallamas
  *
  */
-@EnableWebSecurity
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private UserDetailsService userDetailsService;
@@ -30,35 +30,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-		.authorizeRequests()
-			.antMatchers("/h2-console/**","/img/**","/css/**","/js/**","/webjars/**", "/", "/index","/login","/registro","/registro/submit").permitAll()
-			.antMatchers("/admin/**").hasAnyRole("ADMIN")
-			.antMatchers("/user/**").hasAnyRole("USER")
-			.anyRequest().authenticated()
-			.and()
-		.formLogin()
-			.loginPage("/login").defaultSuccessUrl("/listarTodos")
-			.permitAll()
-			.and()
-		.logout()
-			.logoutUrl("/logout")
-			.permitAll()
-			.and()
+	//@formatter:off
+		http.authorizeRequests()
+				.antMatchers("/h2-console/**", "/img/**", "/css/**", "/js/**", "/webjars/**", "/", "/index", "/login",
+						"/registro", "/registro/submit").permitAll()
+				.antMatchers("/admin/**").hasAnyRole("ADMIN")
+				.antMatchers("/user/**").hasAnyRole("USER")
+			.anyRequest()
+				.authenticated()
+				.and()
+			.formLogin().loginPage("/login").defaultSuccessUrl("/admin/listarTodos")
+				.permitAll()
+				.and()
+			.logout().logoutUrl("/logout").logoutSuccessUrl("/index")
+				.permitAll()
+				.and()
 			.exceptionHandling()
 				.accessDeniedPage("/acceso-denegado");
-	
+
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
+	//@formatter:on
 	}
 
 }

@@ -47,7 +47,7 @@
 					<td th:text="${hermanoHist.email}"></td>
 					<td th:text="${hermanoHist.fechaAlta}"></td>
 					<td th:text="${hermanoHist.fechaBaja}"></td>
- 					<td><a href="#" th:href="@{/reactivarHnoHist/{id}(id=${hermanoHist.id})}" onclick="return confirm('¿ESTÁ SEGURO DE VOLVER A ACTIVAR ESTE HERMANO?');">Reactivar</a>
+ 					<td><a href="#" th:href="@{/admin/reactivarHnoHist/{id}(id=${hermanoHist.id})}" onclick="return confirm('¿ESTÁ SEGURO DE VOLVER A ACTIVAR ESTE HERMANO?');">Reactivar</a>
 					</td>
 				</tr>
 			</table>
