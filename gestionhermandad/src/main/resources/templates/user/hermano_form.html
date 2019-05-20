@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Datos del hermano</title>
+<!-- Required meta tags -->
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!--Mis estilos-->
+<link rel="stylesheet" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<header class="jumbotron text-warning text-right mb-0">
+		<h1 class="display-4">Editar perfil</h1>
+	</header>
+	<div th:insert="fragments/nav :: navAdmin"></div>
+
+	<form
+		th:action="${hermano.id != 0} ? @{/editarHno/submit} : @{/nuevoHno/submit}"
+		th:object="${hermano}" method="post">
+		<input th:if="${hermano.id != 0}" type="hidden" name="id"
+			th:field="*{id}" />
+		<table>
+			<tr>
+				<td><label for="numHermano">Número de hermano</label></td>
+				<td><input readonly type="number" th:field="*{numHermano}" /></td>
+			</tr>
+			<tr>
+				<td><label for="nombre">Nombre</label></td>
+				<td><input type="text" th:field="*{nombre}" /></td>
+			</tr>
+			<tr>
+				<td><label for="apellidos">Apellidos</label></td>
+				<td><input type="text" th:field="*{apellidos}" /></td>
+			</tr>
+			<tr>
+				<td><label for="telefono">Teléfono</label></td>
+				<td><input type="text" th:field="*{telefono}" /></td>
+			</tr>
+			<tr>
+				<td><label for="movil">Móvil</label></td>
+				<td><input type="text" th:field="*{movil}" /></td>
+			</tr>
+			<tr>
+				<td><label for="direccion">Dirección</label></td>
+				<td><input type="text" th:field="*{direccion}" /></td>
+			</tr>
+			<tr>
+				<td><label for="localidad">Localidad</label></td>
+				<td><input type="text" th:field="*{localidad}" /></td>
+			</tr>
+			<tr>
+				<td><label for="provincia">Provincia</label></td>
+				<td><input type="text" th:field="*{provincia}" /></td>
+			</tr>
+			<tr>
+				<td><label for="codigoPostal">Código Postal</label></td>
+				<td><input type="text" th:field="*{codigoPostal}" /></td>
+			</tr>
+			<tr>
+				<td><label for="pais">País</label></td>
+				<td><input type="text" th:field="*{pais}" /></td>
+			</tr>
+			<tr>
+				<td><label for="fechaNacimiento">Fecha de nacimiento</label></td>
+				<td><input type="date" th:field="*{fechaNacimiento}" /></td>
+			</tr>
+			<tr>
+				<td><label for="email">Email</label></td>
+				<td><input type="email" th:field="*{email}" /></td>
+			</tr>
+			<tr>
+				<td><label for="usuario">Usuario</label></td>
+				<td><input type="text" th:field="*{usuario}" required /></td>
+			</tr>
+			<tr>
+				<td><label for="password">Contraseña</label></td>
+				<td><input type="text" th:field="*{password}" required/></td>
+			</tr>
+			<tr>
+				<td><label for="isAdmin">Es administrador</label></td>
+				<td><input type="hidden" th:field="*{Admin}" /></td>
+			</tr>
+			<tr>
+				<td><label for="fechaAlta">Fecha de alta</label></td>
+				<td><input readonly type="date" th:field="*{fechaAlta}" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="Enviar" value="Enviar datos" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

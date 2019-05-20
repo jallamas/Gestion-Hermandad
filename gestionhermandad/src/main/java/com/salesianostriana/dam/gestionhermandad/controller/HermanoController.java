@@ -61,7 +61,7 @@ public class HermanoController {
 	/**
 	 * Método que procesa la respuesta del formulario al editar
 	 */
-	@PostMapping("/editarHno/submit")
+	@PostMapping("/admin/editarHno/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("hermano") Hermano hno) {
 //		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 //		hno.setPassword(passwordEncoder.encode(hno.getPassword()));
@@ -69,6 +69,24 @@ public class HermanoController {
 		return "redirect:/admin/listarTodos";
 	}
 
+	@GetMapping("/user/editarHno/{id}")
+	public String mostrarFormularioEdicionUser(@PathVariable("id") long id, Model model) {
+
+		Hermano hnoEditar = hermanoServicio.findById(id);
+		model.addAttribute("hermano", hnoEditar);
+		return "user/hermano_form";
+	}
+
+	/**
+	 * Método que procesa la respuesta del formulario al editar
+	 */
+	@PostMapping("user/editarHno/submit")
+	public String procesarFormularioEdicionUser(@ModelAttribute("hermano") Hermano hno) {
+//		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//		hno.setPassword(passwordEncoder.encode(hno.getPassword()));
+		hermanoServicio.edit(hno);
+		return "redirect:/vistaHermanoProvisional";
+	}
 	@GetMapping("/admin/pasarHnoHist/{id}")
 	public String pasarHnoHist(@PathVariable("id") long id) {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
