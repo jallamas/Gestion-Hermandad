@@ -39,7 +39,7 @@ public class PuestoController {
 	@PostMapping("/admin/nuevopuesto/submit")
 	public String procesarNuevoPuesto(@ModelAttribute("puesto") Puesto puesto) {
 		puestoServicio.save(puesto);
-		return "redirect:/puestos";
+		return "redirect:/admin/puestos";
 	}
 
 	@GetMapping("/admin/puestos")
@@ -61,12 +61,12 @@ public class PuestoController {
 	@PostMapping("/admin/editarpuesto/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("puesto") Puesto puesto) {
 		puestoServicio.edit(puesto);
-		return "redirect:/puestos";
+		return "redirect:/admin/puestos";
 	}
 
 	@GetMapping("/admin/borrarpuesto/{id}")
 	public String borrarpuesto(@PathVariable("id") long id) {
 		puestoServicio.deleteById(id);
-		return "redirect:/puestos";
+		return "redirect:/admin/puestos";
 	}
 }
