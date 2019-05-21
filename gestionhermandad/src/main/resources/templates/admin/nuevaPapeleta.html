@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Datos del hermano</title>
+<!-- Required meta tags -->
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!--Mis estilos-->
+<link rel="stylesheet" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<header class="jumbotron text-warning text-right mb-0">
+		<h1 class="display-4">Mi Hermandad</h1>
+	</header>
+	<div th:insert="fragments/nav :: navAdmin"></div>
+
+	<form
+		th:action="${hermano.id != 0} ? @{/admin/editarHno/submit} : @{/admin/nuevoHno/submit}"
+		th:object="${hermano}" method="post">
+		<input th:if="${hermano.id != 0}" type="hidden" name="id"
+			th:field="*{id}" />
+		<table>
+			<tr>
+				<td><label for="numHermano">Número de hermano</label></td>
+				<td><input readonly type="number" th:field="*{numHermano}"
+					placeholder="Se asignará automáticamente" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="Enviar" value="Enviar datos" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

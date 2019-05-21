@@ -35,7 +35,7 @@ public class Hermano extends HermanoProvisional {
 	private int numHermano;
 	private boolean isAdmin;
 	private boolean solicitaBaja;
-
+	
 	/**
 	 * @param numExpediente   Número del expediente
 	 * @param nombre          Nombre del hermano

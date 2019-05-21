@@ -34,21 +34,33 @@ public class PapeletaSitio {
 	@DateTimeFormat(pattern = "dd-mm-yyyy")
 	private LocalDate fecha;
 
-	@ManyToOne
-	private Cofradia cofradia;
+	private int anyo;
 
 	@ManyToOne
 	private Puesto puesto;
+	
+	@ManyToOne
+	private Hermano hermano;
 
 	/**
+	 * 
 	 * @param fecha  Fecha de expedición de la papeleta.
+	 * @param anyo   Año de la procesión.
 	 * @param anyo   Cofradía del año a la que pertenece la papeleta.
 	 * @param puesto Puesto que se ocupará en la cofradía.
+	 * @param hermano Hermano al que se le expide la papeleta de sitio
 	 */
-	public PapeletaSitio(LocalDate fecha, Cofradia cofradia, Puesto puesto) {
+	public PapeletaSitio(LocalDate fecha, int anyo, Puesto puesto, Hermano hermano) {
 		super();
 		this.fecha = fecha;
-		this.cofradia = cofradia;
+		this.anyo = anyo;
 		this.puesto = puesto;
+		this.hermano = hermano;
+	}
+
+	public PapeletaSitio(Puesto puesto, Hermano hermano) {
+		super();
+		this.puesto = puesto;
+		this.hermano = hermano;
 	}
 }

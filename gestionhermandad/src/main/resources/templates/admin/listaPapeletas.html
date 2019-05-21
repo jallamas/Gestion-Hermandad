@@ -17,53 +17,52 @@
 <link rel="stylesheet"
 	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
 	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+
 <link rel="stylesheet" type="text/css"
 	href="/webjars/datatables/1.10.19/css/dataTables.bootstrap4.css">
 <!--Mis estilos-->
 <link rel="stylesheet" href="../../static/css/styles.css"
 	th:href="@{/css/styles.css}" />
 
-
 </head>
+
 <body>
 	<div th:replace="fragments/nav :: header"></div>
 	<div th:replace="fragments/nav :: navAdmin"></div>
+	<ul class="navbar-nav my-2 my-lg-0">
+		<li><a class="nav-link nav-outline-warning mr-sm-2"
+			th:href="@{/admin/nuevaPapeleta}">Añadir Papeleta de Sitio</a></li>
+	</ul>
 
 	<div class="row">
 		<div class="col">
-			<h2>Listado de Hermanos Histórico</h2>
-			<table id="hermanosTabla" class="table table-striped">
+			<h2>Listado de Papeletas de Sitio</h2>
+			<table id="papeletasTabla" class="table table-striped">
 				<thead>
 					<tr>
 						<th>Nombre</th>
 						<th>Apellidos</th>
-						<th>Teléfono</th>
-						<th>Móvil</th>
-						<th>Email</th>
-						<th>Fecha de Alta</th>
-						<th>Fecha de Baja</th>
+						<th>Puesto</th>
+						<th>Fecha</th>
 						<th>Operaciones</th>
 					</tr>
 				</thead>
-				<tr th:each="hermanoHist : ${listaHermanoHist}">
-					<td th:text="${hermanoHist.nombre}"></td>
-					<td th:text="${hermanoHist.apellidos}"></td>
-					<td th:text="${hermanoHist.telefono}"></td>
-					<td th:text="${hermanoHist.movil}"></td>
-					<td th:text="${hermanoHist.email}"></td>
-					<td th:text="${hermanoHist.fechaAlta}"></td>
-					<td th:text="${hermanoHist.fechaBaja}"></td>
+				<tr th:each="papeleta : ${listaPapeletas}">
+					<td th:text="${papeleta.hermano.nombre}"></td>
+					<td th:text="${papeleta.hermano.apellidos}"></td>
+					<td th:text="${papeleta.puesto}"></td>
+					<td th:text="${papeleta.fecha}"></td>
 					<td><a href="#"
-						th:href="@{/admin/reactivarHnoHist/{id}(id=${hermanoHist.id})}"
-						onclick="return confirm('¿ESTÁ SEGURO DE VOLVER A ACTIVAR ESTE HERMANO?');">Reactivar</a>
+						th:href="@{/admin/editarPapeletaSitio/{id}(id=${papeleta.id})}">Editar</a>
+					| <a th:href="@{/admin/borrar/{id}(id=${papeleta.id})}" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR ESTA PAPELETA DE SITIO?');">Borrar</a>
 					</td>
 				</tr>
 			</table>
 		</div>
 	</div>
 
-
 	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<!--Datatables-->
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -76,7 +75,6 @@
 		src="/webjars/datatables/1.10.19/js/dataTables.bootstrap4.js"></script>
 
 	<script type="text/javascript" src="/js/datatable.js"></script>
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
