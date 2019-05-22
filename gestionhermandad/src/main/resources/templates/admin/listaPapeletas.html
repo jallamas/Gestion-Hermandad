@@ -48,8 +48,8 @@
 					</tr>
 				</thead>
 				<tr th:each="papeleta : ${listaPapeletas}">
-					<td th:text="${papeleta.hermano.nombre}"></td>
-					<td th:text="${papeleta.hermano.apellidos}"></td>
+					<td th:text="${hermano.nombre}"></td>
+					<td th:text="${hermano.apellidos}"></td>
 					<td th:text="${papeleta.puesto}"></td>
 					<td th:text="${papeleta.fecha}"></td>
 					<td><a href="#"

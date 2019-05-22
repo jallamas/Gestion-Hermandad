@@ -15,12 +15,13 @@
 	</header>
 
 	<footer th:fragment="footer" class="display-7 mt-4">
-		<img alt="Escudo" src="img/emblema.jpg" width="72px"><br />
-		<br />
+		<img alt="Escudo" src="img/emblema.jpg" width="72px"><br /> <br />
 		<p>Real, Ilustre y Muy Programática Hermandad de no te quiero yo
 			ni decir y estilos lamentables.</p>
 		<p>c/ Condes de Bustillo, 17. 41010 Sevilla</p>
-		<p>Tfno: 954 33 14 88 - <a href="mailto:hermandad@mihermandad.com">hermandad@mihermandad.com</a></p>
+		<p>
+			Tfno: 954 33 14 88 - <a href="mailto:hermandad@mihermandad.com">hermandad@mihermandad.com</a>
+		</p>
 	</footer>
 
 	<nav th:fragment="navAdmin"
@@ -39,12 +40,13 @@
 					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Hermanos</a>
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
-						<a class="dropdown-item" th:href="@{/admin/listarTodos}">Gestión</a> <a
-							class="dropdown-item" th:href="@{/admin/listarTodosProv}">Altas
+						<a class="dropdown-item" th:href="@{/admin/listarTodos}">Gestión</a>
+						<a class="dropdown-item" th:href="@{/admin/listarTodosProv}">Altas
 							pendientes</a> <a class="dropdown-item" href="#">Bajas pendientes</a>
 						<a class="dropdown-item"
 							th:href="${@hermanoServicio.renumerarHermanos()}">Renumerar
-							hermanos</a> <a class="dropdown-item" th:href="@{/admin/listarHistoricos}">Histórico</a>
+							hermanos</a> <a class="dropdown-item"
+							th:href="@{/admin/listarHistoricos}">Histórico</a>
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-warning" href="#"
@@ -61,8 +63,8 @@
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
 						<a class="dropdown-item" th:href="@{/admin/puestos}">Puestos</a> <a
 							class="dropdown-item" href="#">Solicitudes puestos</a> <a
-							class="dropdown-item" th:href="@{/admin/listarTodasPapeletas}">Solicitudes Papeletas</a> <a
-							class="dropdown-item" href="#">Mapa cofradía</a>
+							class="dropdown-item" th:href="@{/admin/listarTodasPapeletas}">Solicitudes
+							Papeletas</a> <a class="dropdown-item" href="#">Mapa cofradía</a>
 					</div></li>
 			</ul>
 			<ul class="navbar-nav my-2 my-lg-0">
@@ -86,21 +88,28 @@
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active"><a class="nav-link text-warning"
 					href="/">Inicio <span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link text-warning" th:href="@{/quienes_somos}">Quienes
-						somos</a></li>
+				<li class="nav-item"><a class="nav-link text-warning"
+					th:href="@{/quienes_somos}">Quienes somos</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-warning" href="#"
 					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Gestiones Hermanos</a>
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
-						<a class="dropdown-item" th:href="@{/user/editarHno}">Editar perfil</a> <a
-							class="dropdown-item" href="#">Solicitar Papeleta de Sitio</a>
+						<a class="dropdown-item" th:href="@{/user/editarHno}">Editar
+							perfil</a> <a class="dropdown-item" href="#">Solicitar Papeleta
+							de Sitio</a>
 					</div></li>
 			</ul>
 			<ul class="navbar-nav my-2 my-lg-0">
 				<li><a class="nav-link nav-outline-warning mr-sm-2"
-					th:href="@{/admin/listarTodos}">Área de Gestión</a></li>
+					th:href="@{/admin/listarTodos}">Área de Administración</a></li>
 			</ul>
+			<div class="button-group" sec:authorize="!isFullyAuthenticated()">
+				<a href="/login">Login</a>
+			</div>
+			<div class="button-group" sec:authorize="isFullyAuthenticated()">
+				<a href="/logout">Logout</a>
+			</div>
 		</div>
 	</nav>
 

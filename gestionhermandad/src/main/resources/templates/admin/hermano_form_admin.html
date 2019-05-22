@@ -18,9 +18,7 @@
 	th:href="@{/css/styles.css}" />
 </head>
 <body>
-	<header class="jumbotron text-warning text-right mb-0">
-		<h1 class="display-4">Mi Hermandad</h1>
-	</header>
+	<div th:insert="fragments/nav :: header"></div>
 	<div th:insert="fragments/nav :: navAdmin"></div>
 
 	<form
