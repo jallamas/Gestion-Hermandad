@@ -54,13 +54,13 @@ public class HermanoProvisionalController {
 	@GetMapping("/admin/validar/{id}")
 	public String validar(@PathVariable("id") long id) {
 		hermanoProvisionalServicio.validarHermanoProvisional(hermanoProvisionalServicio.findById(id));
-		return "redirect:/listarTodosProv";
+		return "redirect:/admin/listarTodosProv";
 	}
 
 	@GetMapping("/admin/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
 		hermanoProvisionalServicio.deleteById(id);
-		return "redirect:/listarTodosProv";
+		return "redirect:/admin/listarTodosProv";
 	}
 
 }

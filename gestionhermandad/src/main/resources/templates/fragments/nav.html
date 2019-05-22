@@ -7,7 +7,7 @@
 </head>
 <body>
 	<header th:fragment="header"
-		class="jumbotron text-warning text-right mb-0">
+		class="jumbotron rounded-0 text-warning text-right mb-0">
 		<h1 class="display-4">Mi Hermandad</h1>
 		<h5>
 			Bienvenido <span sec:authentication="name">Usuario</span>
@@ -52,7 +52,7 @@
 					aria-expanded="false">Listados</a>
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
 						<a class="dropdown-item" href="#">Censo</a> <a
-							class="dropdown-item" href="#">Búsquedas</a>
+							class="dropdown-item" th:href="@{/admin/listarTodos}">Búsquedas</a>
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-warning" href="#"
