@@ -23,7 +23,9 @@
 	<div th:replace="fragments/nav :: header"></div>
 	<div th:replace="fragments/nav :: navAdmin"></div>
 	<ul class="navbar-nav my-2 my-lg-0">
-		<li><a class="nav-link nav-outline-warning mr-sm-2"
+		<!-- 		<li><a class="nav-link nav-outline-warning mr-sm-2 text-right" -->
+		<!-- 			th:href="@{/admin/nuevopuesto}">Añadir puesto</a></li> -->
+		<li><a class="btn btn-dark btn-outline-warning mr-sm-2 mt-2 float-right"
 			th:href="@{/admin/nuevopuesto}">Añadir puesto</a></li>
 	</ul>
 	<div class="row">
@@ -47,8 +49,10 @@
 					<td th:text="${puesto.paso}"></td>
 					<td th:text="${puesto.esDestacado}"></td>
 					<td><a href="#"
-						th:href="@{/admin/editarpuesto/{id}(id=${puesto.id})}">Editar</a> | <a
-						href="#" th:href="@{/admin/borrarpuesto/{id}(id=${puesto.id})}"onclick="return confirm('¿ESTÁ SEGURO DE ELIMINAR ESTE TIPO DE PUESTO?');">Borrar</a>
+						th:href="@{/admin/editarpuesto/{id}(id=${puesto.id})}">Editar</a>
+						| <a href="#"
+						th:href="@{/admin/borrarpuesto/{id}(id=${puesto.id})}"
+						onclick="return confirm('¿ESTÁ SEGURO DE ELIMINAR ESTE TIPO DE PUESTO?');">Borrar</a>
 					</td>
 				</tr>
 			</table>

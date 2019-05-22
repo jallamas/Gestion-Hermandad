@@ -21,10 +21,10 @@
 	<header class="jumbotron text-warning text-right mb-0">
 		<h1 class="display-4">Editar perfil</h1>
 	</header>
-	<div th:insert="fragments/nav :: navAdmin"></div>
+	<div th:insert="fragments/nav :: navUser"></div>
 
 	<form
-		th:action="${hermano.id != 0} ? @{/editarHno/submit} : @{/nuevoHno/submit}"
+		th:action="${hermano.id != 0} ? @{/user/editarHno/submit} : @{/nuevoHno/submit}"
 		th:object="${hermano}" method="post">
 		<input th:if="${hermano.id != 0}" type="hidden" name="id"
 			th:field="*{id}" />
@@ -83,7 +83,7 @@
 			</tr>
 			<tr>
 				<td><label for="password">Contraseña</label></td>
-				<td><input type="text" th:field="*{password}" required/></td>
+				<td><input type="password" th:field="*{password}" value="" required/></td>
 			</tr>
 			<tr>
 				<td><label for="isAdmin">Es administrador</label></td>

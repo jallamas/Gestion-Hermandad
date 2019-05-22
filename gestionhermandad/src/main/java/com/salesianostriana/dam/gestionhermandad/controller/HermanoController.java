@@ -3,6 +3,7 @@
  */
 package com.salesianostriana.dam.gestionhermandad.controller;
 
+import java.security.Principal;
 import java.time.LocalDate;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -41,6 +42,7 @@ public class HermanoController {
 		model.addAttribute("hermano", new Hermano());
 		return "admin/hermano_form_admin";
 	}
+
 	@PostMapping("/admin/nuevoHno/submit")
 	public String procesarAlta(@ModelAttribute("hermano") Hermano hermano) {
 		hermano.setFechaAlta(LocalDate.now());
@@ -63,17 +65,13 @@ public class HermanoController {
 	 */
 	@PostMapping("/admin/editarHno/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("hermano") Hermano hno) {
-//		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		hno.setPassword(passwordEncoder.encode(hno.getPassword()));
 		hermanoServicio.edit(hno);
 		return "redirect:/admin/listarTodos";
 	}
 
-	@GetMapping("/user/editarHno/{id}")
-	public String mostrarFormularioEdicionUser(@PathVariable("id") long id, Model model) {
-
-		Hermano hnoEditar = hermanoServicio.findById(id);
-		model.addAttribute("hermano", hnoEditar);
+	@GetMapping("/user/editarHno")
+	public String mostrarFormularioEdicionUser(Model model, Principal p) {
+		model.addAttribute("hermano", hermanoServicio.buscarHermanoLogeado(p));
 		return "user/hermano_form";
 	}
 
@@ -81,41 +79,31 @@ public class HermanoController {
 	 * Método que procesa la respuesta del formulario al editar
 	 */
 	@PostMapping("user/editarHno/submit")
-	public String procesarFormularioEdicionUser(@ModelAttribute("hermano") Hermano hno) {
-//		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		hno.setPassword(passwordEncoder.encode(hno.getPassword()));
-		hermanoServicio.edit(hno);
-		return "redirect:/vistaHermanoProvisional";
+	public String procesarFormularioEdicionUser(@ModelAttribute("hermano") Hermano hermano) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		hermano.setPassword(passwordEncoder.encode(hermano.getPassword()));
+		hermanoServicio.edit(hermano);
+		return "redirect:/user/vistaHermanoEditado";
 	}
+
+	@GetMapping("/user/vistaHermanoEditado")
+	public String mostrarDatosEditados(Model model, Principal p) {
+		model.addAttribute("hermano", hermanoServicio.buscarHermanoLogeado(p));
+		return "user/vistaHermanoEditado";
+	}
+	
 	@GetMapping("/admin/pasarHnoHist/{id}")
 	public String pasarHnoHist(@PathVariable("id") long id) {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
 		return "redirect:/admin/listarTodos";
 	}
-	
+
 	@GetMapping("/buscar")
 	public String listarFiltrado(Model model) {
 		model.addAttribute("listaHerm", hermanoServicio.findAll());
 		return "admin/buscar";
 	}
 
-//	@GetMapping("/hermanos/buscar")
-//	public String getInicio(Model model) {
-//		BuscarHermanoNombre hnonom=new BuscarHermanoNombre();
-//		model.addAttribute("buscarHermano",hnonom);
-//		return "admin/buscar";
-//	}
-//	
-//	@PostMapping("hermanos/buscar")
-//	public String listarClientes(@ModelAttribute("buscarCliente") BuscarHermanoNombre hnonom, Hermano hno, Model model) {
-//		System.out.println(nom);
-//		List<Hermano> clientesEncontrados=cs.buscarClienteByNomEmpresaContainingIgnoreCase(nom.getNomEmpresa());
-//		model.addAttribute("clientesEncontrados",clientesEncontrados);
-//		for(Hermano i:clientesEncontrados) {
-//			System.out.println(i);
-//		}
-//		return "admin/adminClientesListar";
-//	}
 
-	
+
 }

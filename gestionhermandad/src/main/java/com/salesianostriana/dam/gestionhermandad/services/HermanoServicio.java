@@ -3,6 +3,7 @@
  */
 package com.salesianostriana.dam.gestionhermandad.services;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -64,5 +65,15 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 
 	public Hermano buscarPorUsuario(String usuario) {
 		return repositorio.findFirstByUsuario(usuario);
+	}
+	
+	public Hermano buscarHermanoLogeado(Principal p) {
+		Hermano hermano;
+		if (p!=null) {
+			hermano=this.buscarPorUsuario(p.getName());
+			return hermano;
+		}else {
+			return null;
+		}
 	}
 }
