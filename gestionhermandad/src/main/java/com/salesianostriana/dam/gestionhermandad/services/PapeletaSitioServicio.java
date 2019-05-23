@@ -20,10 +20,10 @@ import com.salesianostriana.dam.gestionhermandad.services.base.ServicioBase;
 @Service
 public class PapeletaSitioServicio extends ServicioBase<PapeletaSitio, Long, PapeletaSitioRepository> {
 
-	
 	protected PapeletaSitioRepository papeletaSitioRepository;
 
-	public List<PapeletaSitio> comprobarPapeletaHermanoAnyo(Hermano hermano) {
-		return papeletaSitioRepository.comprobarPapeletaHermanoAnyo(LocalDate.now().getYear(), hermano.getId());
-	}
+//	public List<PapeletaSitio> comprobarPapeletaHermanoAnyo(Hermano hermano) {
+//
+//		return papeletaSitioRepository.comprobarPapeletaHermanoAnyo(LocalDate.now().getYear(), hermano.getId());
+//	}
 }

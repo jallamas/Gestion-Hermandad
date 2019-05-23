@@ -32,24 +32,21 @@ public class PapeletaSitioHermanoController {
 	PuestoServicio puestoServicio;
 	@Autowired
 	HermanoServicio hermanoServicio;
-	
+
 	public PapeletaSitioHermanoController(PapeletaSitioServicio papeletaSitioServicio) {
 		super();
 		this.papeletaSitioServicio = papeletaSitioServicio;
 	}
-	
+
 	@GetMapping("/user/nuevaPapeleta")
 	public String mostrarFormulario(Model model, Principal p) {
 		Hermano hno = hermanoServicio.buscarHermanoLogeado(p);
-		if (papeletaSitioServicio.comprobarPapeletaHermanoAnyo(hno).isEmpty()) {
-		PapeletaSitio papeletaSitio=new PapeletaSitio();
+		PapeletaSitio papeletaSitio = new PapeletaSitio();
 		papeletaSitio.setHermano(hno);
 		model.addAttribute("papeletaSitio", papeletaSitio);
-		model.addAttribute("puestos", puestoServicio.findAll());
-		return "user/nuevaPapeleta";}
-		else {
-			return "user/PapeletaExistente";
-		}
+		model.addAttribute("puestos", puestoServicio.listarPuestosNormales());
+		//model.addAttribute("puestos", puestoServicio.findAll());
+		return "user/nuevaPapeleta";
 	}
 
 	@PostMapping("/user/nuevaPapeleta/submit")

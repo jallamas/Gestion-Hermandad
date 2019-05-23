@@ -16,7 +16,8 @@ import com.salesianostriana.dam.gestionhermandad.model.PapeletaSitio;
  *
  */
 public interface PapeletaSitioRepository extends JpaRepository<PapeletaSitio, Long> {
-
-	@Query(value="select p from PapeletaSitio p where p.anyo=anyoActual and p.Hermano=hermanoActual")
-	List<PapeletaSitio> comprobarPapeletaHermanoAnyo(@Param("anyoActual") int anyoActual, @Param("hermanoActual") Long hermanoActual);
+	
+	
+//	@Query("select p from PapeletaSitio p where p.anyo=:anyoActual and p.hermanoId=:hermanoActual")
+//	List<PapeletaSitio> comprobarPapeletaHermanoAnyo(@Param("anyoActual") int anyoActual, @Param("hermanoActual") Long hermanoActual);
 }
