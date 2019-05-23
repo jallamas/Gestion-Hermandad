@@ -47,11 +47,11 @@ public class PapeletaSitioAdminController {
 	@GetMapping("/admin/nuevaPapeleta/{id}")
 	public String mostrarFormulario(@PathVariable("id") long id, Model model) {
 		Hermano hno = hermanoServicio.findById(id);
-		model.addAttribute("papeletaSitio", new PapeletaSitio());
-		model.addAttribute("hermano",hno);
+		PapeletaSitio papeletaSitio=new PapeletaSitio();
+		papeletaSitio.setHermano(hno);
+		model.addAttribute("papeletaSitio", papeletaSitio);
 		model.addAttribute("puestos", puestoServicio.findAll());
 		return "admin/nuevaPapeleta";
-
 	}
 
 	@PostMapping("/admin/nuevaPapeleta/submit")

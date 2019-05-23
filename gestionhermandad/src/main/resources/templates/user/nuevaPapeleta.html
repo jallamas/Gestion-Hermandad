@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Datos del hermano</title>
+<!-- Required meta tags -->
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!--Mis estilos-->
+<link rel="stylesheet" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<div th:insert="fragments/nav :: header"></div>
+
+	<form
+		th:action="@{/user/nuevaPapeleta/submit}"
+		th:object="${papeletaSitio}" method="post">
+		<input th:if="${papeletaSitio.id != 0}" type="hidden" name="id"
+			th:field="*{id}" />
+			<input type="hidden" th:field="*{hermano}"/>
+		<table>
+			<tr>
+				<td><select id="puesto" class="form-control" th:field="*{puesto}">
+						<option value="">Puesto que ocupará en la procesión</option>
+						<option th:each="puesto : ${puestos}" th:value="${puesto.id}" th:text="${puesto.nombre}">N/S</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="Enviar" value="Enviar datos" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

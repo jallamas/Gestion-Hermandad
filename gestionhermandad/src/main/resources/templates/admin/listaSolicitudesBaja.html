@@ -30,40 +30,52 @@
 	<div th:replace="fragments/nav :: header"></div>
 	<div th:replace="fragments/nav :: navAdmin"></div>
 	<ul class="navbar-nav my-2 my-lg-0">
-		<li><a class="btn btn-dark btn-outline-warning mr-sm-2 mt-2 float-right"
-			th:href="@{/admin/listarTodos}">Añadir Papeleta de Sitio</a></li>
+		<li><a
+			class="btn btn-dark btn-outline-warning mr-sm-2 mt-2 float-right"
+			th:href="@{/admin/nuevoHno}">Añadir hermano</a></li>
 	</ul>
 
 	<div class="row">
 		<div class="col">
-			<h2>Listado de Papeletas de Sitio</h2>
-			<table id="papeletasTabla" class="table table-striped">
+			<h2>Listado de Hermanos</h2>
+			<table id="hermanosTabla" class="table table-striped">
 				<thead>
 					<tr>
+						<th>Nº Hermano</th>
 						<th>Nombre</th>
 						<th>Apellidos</th>
-						<th>Puesto</th>
-						<th>Fecha</th>
+						<th>Teléfono</th>
+						<th>Móvil</th>
+						<th>Email</th>
+						<th>Fecha de Alta</th>
 						<th>Operaciones</th>
 					</tr>
 				</thead>
-				<tr th:each="papeleta : ${listaPapeletas}">
-					<td th:text="${papeleta.hermano.nombre}"></td>
-					<td th:text="${papeleta.hermano.apellidos}"></td>
-					<td th:text="${papeleta.puesto.nombre}"></td>
-					<td th:text="${papeleta.fecha}"></td>
-					<td><a href="#"
-						th:href="@{/admin/editarPapeletaSitio/{id}(id=${papeleta.id})}">Editar</a>
-					| <a th:href="@{/admin/borrar/{id}(id=${papeleta.id})}" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR ESTA PAPELETA DE SITIO?');">Borrar</a>
-					</td>
-				</tr>
+				<tbody>
+					<tr th:each="hermano : ${listaHerm}">
+						<td th:text="${hermano.numHermano}"></td>
+						<td th:text="${hermano.nombre}"></td>
+						<td th:text="${hermano.apellidos}"></td>
+						<td th:text="${hermano.telefono}"></td>
+						<td th:text="${hermano.movil}"></td>
+						<td th:text="${hermano.email}"></td>
+						<td th:text="${hermano.fechaAlta}"></td>
+						<td><a href="#"
+							th:href="@{/admin/confirmarBajaHno/{id}(id=${hermano.id})}"
+							onclick="return confirm('¿SEGURO QUE DESEA PASAR ESTE HERMANO AL HISTÓRICO?');">Confirmar Baja</a>
+						</td>
+					</tr>
+				</tbody>
 			</table>
+
 		</div>
 	</div>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<!--Datatables-->
+
+
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -75,6 +87,7 @@
 		src="/webjars/datatables/1.10.19/js/dataTables.bootstrap4.js"></script>
 
 	<script type="text/javascript" src="/js/datatable.js"></script>
+
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

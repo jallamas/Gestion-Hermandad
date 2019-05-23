@@ -39,6 +39,13 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 		return hermanoHistorico;
 	}
 
+	public void solicitarBaja(Long id) {
+		Hermano h;
+		h = this.findById(id);
+		h.setSolicitaBaja(true);
+		hermanoServicio.edit(h);
+	}
+
 	public List<Hermano> listarSolicitudesBaja() {
 		return repositorio.findBySolicitaBajaTrue();
 	}
@@ -58,21 +65,21 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 		LocalDate fechaReferencia = LocalDate.now().minusYears(18);
 		return hermanoRepositorio.findByFechaNacimientoBefore(fechaReferencia);
 	}
-	
+
 	public int obtenerNuevoNumHermano() {
-		return repositorio.obtenerNuevoNumHermano()+1;
+		return repositorio.obtenerNuevoNumHermano() + 1;
 	}
 
 	public Hermano buscarPorUsuario(String usuario) {
 		return repositorio.findFirstByUsuario(usuario);
 	}
-	
+
 	public Hermano buscarHermanoLogeado(Principal p) {
 		Hermano hermano;
-		if (p!=null) {
-			hermano=this.buscarPorUsuario(p.getName());
+		if (p != null) {
+			hermano = this.buscarPorUsuario(p.getName());
 			return hermano;
-		}else {
+		} else {
 			return null;
 		}
 	}

@@ -37,6 +37,12 @@ public class HermanoController {
 		return "admin/listaHermanos";
 	}
 
+	@GetMapping("/admin/listarBajas")
+	public String ListarSolicitudesBaja(Model model) {
+		model.addAttribute("listaHerm", hermanoServicio.listarSolicitudesBaja());
+		return "admin/listaSolicitudesBaja";
+	}
+
 	@GetMapping("/admin/nuevoHno")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("hermano", new Hermano());
@@ -91,11 +97,17 @@ public class HermanoController {
 		model.addAttribute("hermano", hermanoServicio.buscarHermanoLogeado(p));
 		return "user/vistaHermanoEditado";
 	}
-	
+
 	@GetMapping("/admin/pasarHnoHist/{id}")
 	public String pasarHnoHist(@PathVariable("id") long id) {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
 		return "redirect:/admin/listarTodos";
+	}
+	
+	@GetMapping("/admin/confirmarBajaHno/{id}")
+	public String confirmarBajaHermano(@PathVariable("id") long id) {
+		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
+		return "redirect:/admin/listarBajas";
 	}
 
 	@GetMapping("/buscar")
@@ -104,6 +116,16 @@ public class HermanoController {
 		return "admin/buscar";
 	}
 
+	@GetMapping("/user/solicitarBaja/{id}")
+	public String solicitarBaja(@PathVariable("id") long id) {
+		hermanoServicio.solicitarBaja(id);
+		return "redirect:/";
+	}
 
+	@GetMapping("/admin/renumerarHermanos")
+	public String renumerarHermano() {
+		hermanoServicio.renumerarHermanos();
+		return "redirect:/admin/listarTodos";
+	}
 
 }
