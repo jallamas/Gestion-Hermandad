@@ -2,6 +2,12 @@ header.jumbotron {
 	background-image: url(../img/header.jpg);
 	background-size: cover;
 }
+form{
+	width: 75%;
+	margin: 0 auto;
+	font-family: Arial;
+	padding:1%;	
+}
 footer{
 	font-family: Arial;
 	text-align: center;
@@ -16,9 +22,6 @@ footer{
 	border-radius: 2% !important;
 }
 
-form input {
-	width: 250px;
-}
 .card-img-top {
 	width: 64px;
 	height: 70px;

@@ -97,9 +97,8 @@
 					aria-expanded="false">Gestiones Hermanos</a>
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
 						<a class="dropdown-item" th:href="@{/user/editarHno}">Editar
-							perfil</a> <a class="dropdown-item" th:href="@{/user/nuevaPapeleta}"
-							>Solicitar Papeleta
-							de Sitio</a> <a class="dropdown-item"
+							perfil</a> <a class="dropdown-item" th:href="@{/user/nuevaPapeleta}">Solicitar
+							Papeleta de Sitio</a> <a class="dropdown-item"
 							th:href="@{/user/solicitarBaja/{id}(id=${hermano.id})}"
 							onclick="return confirm('¿ESTÁ SEGURO DE QUE DESEA SOLICITAR LA BAJA EN LA HERMANDAD?');">Solicitar
 							la baja</a>
@@ -117,6 +116,33 @@
 			</div>
 		</div>
 	</nav>
+	<nav th:fragment="navStatic"
+		class="navbar navbar-expand-md navbar-dark bg-dark">
+		<button class="navbar-toggler d-lg-none" type="button"
+			data-toggle="collapse" data-target="#collapsibleNavId"
+			aria-controls="collapsibleNavId" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavId">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link text-warning"
+					href="/">Inicio <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link text-warning"
+					th:href="@{/quienes_somos}">Quienes somos</a></li>
 
+			</ul>
+			<ul class="navbar-nav my-2 my-lg-0">
+				<li><a class="nav-link nav-outline-warning mr-sm-2"
+					th:href="@{/admin/listarTodos}">Área de Administración</a></li>
+			</ul>
+			<div class="button-group" sec:authorize="!isFullyAuthenticated()">
+				<a href="/login">Login</a>
+			</div>
+			<div class="button-group" sec:authorize="isFullyAuthenticated()">
+				<a href="/logout">Logout</a>
+			</div>
+		</div>
+	</nav>
 </body>
 </html>
