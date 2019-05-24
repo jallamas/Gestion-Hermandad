@@ -16,7 +16,8 @@ import com.salesianostriana.dam.gestionhermandad.model.HermanoProvisional;
  */
 public interface HermanoProvisionalRepository extends JpaRepository<HermanoProvisional, Long> {
 
-//	@Query(value = "SELECT * FROM HERMANOS WHERE DTYPE='HermanoProvisional'", nativeQuery = true)
 	@Query("select hp from HermanoProvisional hp where TYPE(hp)=HermanoProvisional order by hp.apellidos")
 	List<HermanoProvisional> findAll();
+	
+	List<HermanoProvisional> findByUsuario(String usuario);
 }

@@ -3,6 +3,8 @@
  */
 package com.salesianostriana.dam.gestionhermandad.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,4 +38,7 @@ public class HermanoProvisionalServicio extends ServicioBase<HermanoProvisional,
 		return hermano;
 	}
 
+	public List<HermanoProvisional> findByUsuario(String usuario){
+		return repositorio.findByUsuario(usuario);
+	}
 }

@@ -25,7 +25,7 @@ import com.salesianostriana.dam.gestionhermandad.services.HermanoProvisionalServ
 public class HermanoProvisionalController {
 
 	private HermanoProvisionalServicio hermanoProvisionalServicio;
-	
+
 	public HermanoProvisionalController(HermanoProvisionalServicio hermanoprovisionalservicio) {
 		this.hermanoProvisionalServicio = hermanoprovisionalservicio;
 	}
@@ -38,11 +38,15 @@ public class HermanoProvisionalController {
 
 	@PostMapping("/registro/submit")
 	public String procesarAltaProvisional(@ModelAttribute("hermanoProvisional") HermanoProvisional hermanoProvisional) {
-		hermanoProvisional.setFechaAlta(LocalDate.now());
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		hermanoProvisional.setPassword(passwordEncoder.encode(hermanoProvisional.getPassword()));
-		hermanoProvisionalServicio.save(hermanoProvisional);
-		return "/vistaHermanoProvisional";
+		if (hermanoProvisionalServicio.findByUsuario(hermanoProvisional.getUsuario()).isEmpty()) {
+			hermanoProvisional.setFechaAlta(LocalDate.now());
+			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			hermanoProvisional.setPassword(passwordEncoder.encode(hermanoProvisional.getPassword()));
+			hermanoProvisionalServicio.save(hermanoProvisional);
+			return "/vistaHermanoProvisional";
+		} else {
+			return "/usuarioExistente";
+		}
 	}
 
 	@GetMapping({ "/admin/listarTodosProv" })

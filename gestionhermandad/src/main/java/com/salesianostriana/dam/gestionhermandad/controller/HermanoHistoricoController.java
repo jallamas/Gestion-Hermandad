@@ -36,6 +36,6 @@ public class HermanoHistoricoController {
 	@GetMapping("admin/reactivarHnoHist/{id}")
 	public String pasarHnoHist(@PathVariable("id") long id) {
 		hermanoHistoricoServicio.reactivarHermanoHistorico(hermanoHistoricoServicio.findById(id));
-		return "redirect:/listarHistoricos";
+		return "redirect:/admin/listaHermanosHist";
 	}
 }

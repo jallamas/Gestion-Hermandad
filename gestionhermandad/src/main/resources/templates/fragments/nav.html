@@ -15,7 +15,8 @@
 	</header>
 
 	<footer th:fragment="footer" class="display-7 mt-4">
-		<img alt="Escudo" src="img/emblema.jpg" width="72px"><br /> <br />
+		<img alt="Escudo" src="img/emblema.jpg" th:src="@{~/img/emblema.jpg}"
+			width="72px"><br /> <br />
 		<p>Real, Ilustre y Muy Programática Hermandad de no te quiero yo
 			ni decir y estilos lamentables.</p>
 		<p>c/ Condes de Bustillo, 17. 41010 Sevilla</p>
@@ -35,6 +36,8 @@
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavId">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link text-warning"
+					href="/">Inicio <span class="sr-only">(current)</span></a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-warning" href="#"
 					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
@@ -47,11 +50,11 @@
 							class="dropdown-item" th:href="@{/admin/renumerarHermanos}"
 							onclick="return confirm('¿ESTÁ SEGURO DE QUE DESEA RENUMERAR LA LISTA DE HERMANOS?');">Renumerar
 							hermanos</a><a class="dropdown-item"
-							th:href="@{/admin/resetearPapeletasPedidasHermanos}"onclick="return confirm('¿ESTÁ SEGURO DE QUE DESEA RESETEAR EL ESTADO DE LAS PAPELETAS DE SITIO DE LOS HERMANOS A -NO SACADA-?');">Resetear
+							th:href="@{/admin/resetearPapeletasPedidasHermanos}"
+							onclick="return confirm('¿ESTÁ SEGURO DE QUE DESEA RESETEAR EL ESTADO DE LAS PAPELETAS DE SITIO DE LOS HERMANOS A -NO SACADA-?');">Resetear
 							papeletas</a> <a class="dropdown-item"
 							th:href="@{/admin/listarHistoricos}">Histórico</a>
-					</div>
-				</li>
+					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-warning" href="#"
 					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
@@ -59,19 +62,16 @@
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
 						<a class="dropdown-item" href="#">Censo</a> <a
 							class="dropdown-item" th:href="@{/admin/listarTodos}">Búsquedas</a>
-					</div>
-				</li>
+					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-warning" href="#"
 					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Cofradía</a>
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
 						<a class="dropdown-item" th:href="@{/admin/puestos}">Puestos</a> <a
-							class="dropdown-item" href="#">Solicitudes puestos</a> <a
-							class="dropdown-item" th:href="@{/admin/listarTodasPapeletas}">Solicitudes
-							Papeletas</a> <a class="dropdown-item" href="#">Mapa cofradía</a>
-					</div>
-				</li>
+							class="dropdown-item" th:href="@{/admin/listarTodasPapeletas}">Papeletas
+							de sitio</a>
+					</div></li>
 			</ul>
 			<ul class="navbar-nav my-2 my-lg-0">
 				<li><a class="nav-link nav-outline-warning mr-sm-2"

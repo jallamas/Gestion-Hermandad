@@ -82,7 +82,11 @@
 			</tr>
 			<tr>
 				<td><label for="password">Contraseña</label></td>
-				<td><input type="text" th:field="*{password}" /></td>
+				<td><input type="password" th:field="*{password}" id="pwd1" required/></td>
+			</tr>
+			<tr>
+				<td><label>Repite la contraseña</label></td>
+				<td><input type="password" class="form-control" id="pwd2" required><label id="pwd"></label></td>
 			</tr>
 			<tr>
 				<td><label for="isAdmin">Es administrador</label></td>
@@ -97,7 +101,7 @@
 			</tr>
 		</table>
 	</form>
-
+<div th:insert="fragments/nav :: footer"></div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -105,5 +109,6 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/contrasenyas.js"></script>
 </body>
 </html>

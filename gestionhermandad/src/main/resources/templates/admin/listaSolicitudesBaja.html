@@ -62,7 +62,9 @@
 						<td th:text="${hermano.fechaAlta}"></td>
 						<td><a href="#"
 							th:href="@{/admin/confirmarBajaHno/{id}(id=${hermano.id})}"
-							onclick="return confirm('¿SEGURO QUE DESEA PASAR ESTE HERMANO AL HISTÓRICO?');">Confirmar Baja</a>
+							onclick="return confirm('¿SEGURO QUE DESEA PASAR ESTE HERMANO AL HISTÓRICO?');">Confirmar Baja</a> | <a href="#"
+							th:href="@{/admin/anularBajaHno/{id}(id=${hermano.id})}"
+							onclick="return confirm('¿SEGURO QUE DESEA ANULAR ESTA SOLICITUD DE BAJA?');">Anular Baja</a>
 						</td>
 					</tr>
 				</tbody>
@@ -70,7 +72,7 @@
 
 		</div>
 	</div>
-
+<div th:insert="fragments/nav :: footer"></div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<!--Datatables-->

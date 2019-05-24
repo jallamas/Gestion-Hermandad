@@ -16,6 +16,4 @@ import com.salesianostriana.dam.gestionhermandad.services.base.ServicioBase;
 @Service
 public class PapeletaSitioServicio extends ServicioBase<PapeletaSitio, Long, PapeletaSitioRepository> {
 
-	protected PapeletaSitioRepository papeletaSitioRepository;
-
 }

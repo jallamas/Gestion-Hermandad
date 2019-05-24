@@ -58,6 +58,16 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 		h.setSolicitaBaja(true);
 		hermanoServicio.edit(h);
 	}
+	/**
+	 * Método que anula la solicitud de baja en la Hermandad de un hermano
+	 * @param id El id del Hermano
+	 */
+	public void anularBaja(Long id) {
+		Hermano h;
+		h = this.findById(id);
+		h.setSolicitaBaja(false);
+		hermanoServicio.edit(h);
+	}
 
 	/**
 	 * Método que nos busca una lista de los hermanos que han solicitado la baja en

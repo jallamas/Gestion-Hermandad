@@ -109,11 +109,11 @@ public class HermanoController {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
 		return "redirect:/admin/listarBajas";
 	}
-
-	@GetMapping("/buscar")
-	public String listarFiltrado(Model model) {
-		model.addAttribute("listaHerm", hermanoServicio.findAll());
-		return "admin/buscar";
+	
+	@GetMapping("/admin/anularBajaHno/{id}")
+	public String anularBajaHermano(@PathVariable("id") long id) {
+		hermanoServicio.anularBaja(id);
+		return "redirect:/admin/listarBajas";
 	}
 
 	@GetMapping("/user/solicitarBaja/{id}")

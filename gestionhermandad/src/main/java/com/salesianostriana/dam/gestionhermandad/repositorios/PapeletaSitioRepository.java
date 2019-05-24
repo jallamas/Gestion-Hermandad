@@ -13,5 +13,4 @@ import com.salesianostriana.dam.gestionhermandad.model.PapeletaSitio;
  */
 public interface PapeletaSitioRepository extends JpaRepository<PapeletaSitio, Long> {
 	
-
 }

@@ -21,17 +21,16 @@
 </head>
 <body>
 	<div th:insert="fragments/nav :: header"></div>
-
-	<div class="card mx-auto bg-info" style="width: 400px">
+	
+	<div class="card mx-auto bg-info" style="width:400px">
 		<img class="card-img-top mx-auto" src="/img/error.jpg" alt="Error">
 		<div class="card-body">
-			<h2 class="card-title">SE PRODUJO UN ERROR</h2>
-			<p class="card-text">Ya ha expedido su papeleta de sitio para este año. No puede solicitar otra.</p>
-			<a href="/" class="btn btn-primary mx-auto">Volver al inicio</a>
+		  <h2 class="card-title">SE PRODUJO UN ERROR</h2>
+		  <p class="card-text">El nombre de usuario elegido ya está en uso. Si desea registrarse hágalo con otro.</p>
+		  <a href="/" class="btn btn-primary mx-auto">Volver al inicio</a>
 		</div>
-	</div>
-
-
+	  </div>
+	<div th:insert="fragments/nav :: footer"></div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
