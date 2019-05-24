@@ -47,7 +47,7 @@ public class PapeletaSitioAdminController {
 	@GetMapping("/admin/nuevaPapeleta/{id}")
 	public String mostrarFormulario(@PathVariable("id") long id, Model model) {
 		Hermano hno = hermanoServicio.findById(id);
-		PapeletaSitio papeletaSitio=new PapeletaSitio();
+		PapeletaSitio papeletaSitio = new PapeletaSitio();
 		papeletaSitio.setHermano(hno);
 		model.addAttribute("papeletaSitio", papeletaSitio);
 		model.addAttribute("puestos", puestoServicio.findAll());
@@ -59,6 +59,12 @@ public class PapeletaSitioAdminController {
 		papeletaSitio.setFecha(LocalDate.now());
 		papeletaSitio.setAnyo(LocalDate.now().getYear());
 		papeletaSitioServicio.save(papeletaSitio);
+		return "redirect:/admin/listarTodasPapeletas";
+	}
+
+	@GetMapping("/admin/borrarPapeletaSitio/{id}")
+	public String borrar(@PathVariable("id") long id) {
+		papeletaSitioServicio.deleteById(id);
 		return "redirect:/admin/listarTodasPapeletas";
 	}
 }

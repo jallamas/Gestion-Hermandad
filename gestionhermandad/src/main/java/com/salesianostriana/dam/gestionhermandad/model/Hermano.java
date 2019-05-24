@@ -35,7 +35,8 @@ public class Hermano extends HermanoProvisional {
 	private int numHermano;
 	private boolean isAdmin;
 	private boolean solicitaBaja;
-	
+	private boolean papeletaSacada;
+
 	/**
 	 * @param numExpediente   Número del expediente
 	 * @param nombre          Nombre del hermano
@@ -56,6 +57,10 @@ public class Hermano extends HermanoProvisional {
 	 * @param numHermano      Número de hermano que indica la antigüedad.
 	 * @param isAdmin         Booleano que indica si es administrador de la
 	 *                        aplicación.
+	 * @param solicitaBaja    Booleano que indica si el hermano ha solicitado la
+	 *                        baja de la hermandad.
+	 * @param papeletaSacada  Booleano que indica si el hermano ha obtenido su
+	 *                        papeleta de sitio.
 	 */
 	public Hermano(long numExpediente, String nombre, String apellidos, String telefono, String movil, String direccion,
 			String provincia, String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento,
@@ -65,6 +70,7 @@ public class Hermano extends HermanoProvisional {
 		this.numHermano = numHermano;
 		this.isAdmin = false;
 		this.solicitaBaja = false;
+		this.papeletaSacada = false;
 	}
 
 	public Hermano(long numExpediente, String nombre, String apellidos, String telefono, String movil, String direccion,
@@ -74,10 +80,7 @@ public class Hermano extends HermanoProvisional {
 				fechaNacimiento, email, usuario, password, fechaAlta);
 		this.isAdmin = false;
 		this.solicitaBaja = false;
+		this.papeletaSacada = false;
 	}
-	/*
-	 * public Hermano(HermanoProvisional hermanoProv, int numHermano) {
-	 * this.numHermano = numHermano; this.isAdmin = false; }
-	 */
 
 }

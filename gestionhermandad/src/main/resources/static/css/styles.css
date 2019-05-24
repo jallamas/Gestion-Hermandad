@@ -3,8 +3,8 @@ header.jumbotron {
 	background-size: cover;
 }
 form{
-	width: 75%;
-	margin: 0 auto;
+/* 	width: 75%; */
+/* 	margin: 0 auto; */
 	font-family: Arial;
 	padding:1%;	
 }

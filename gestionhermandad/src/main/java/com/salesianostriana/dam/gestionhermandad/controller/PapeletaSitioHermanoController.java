@@ -41,12 +41,19 @@ public class PapeletaSitioHermanoController {
 	@GetMapping("/user/nuevaPapeleta")
 	public String mostrarFormulario(Model model, Principal p) {
 		Hermano hno = hermanoServicio.buscarHermanoLogeado(p);
-		PapeletaSitio papeletaSitio = new PapeletaSitio();
-		papeletaSitio.setHermano(hno);
-		model.addAttribute("papeletaSitio", papeletaSitio);
-		model.addAttribute("puestos", puestoServicio.listarPuestosNormales());
-		//model.addAttribute("puestos", puestoServicio.findAll());
-		return "user/nuevaPapeleta";
+		if (hermanoServicio.buscarPapeletaSacada().contains(hno)) {
+			return "user/papeletaExistente";
+		} else {
+			hno.setPapeletaSacada(true);
+			hermanoServicio.edit(hno);
+			PapeletaSitio papeletaSitio = new PapeletaSitio();
+			papeletaSitio.setHermano(hno);
+			
+			model.addAttribute("papeletaSitio", papeletaSitio);
+			model.addAttribute("puestos", puestoServicio.listarPuestosNormales());
+			// model.addAttribute("puestos", puestoServicio.findAll());
+			return "user/nuevaPapeleta";
+		}
 	}
 
 	@PostMapping("/user/nuevaPapeleta/submit")

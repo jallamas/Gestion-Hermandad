@@ -103,7 +103,7 @@ public class HermanoController {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
 		return "redirect:/admin/listarTodos";
 	}
-	
+
 	@GetMapping("/admin/confirmarBajaHno/{id}")
 	public String confirmarBajaHermano(@PathVariable("id") long id) {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
@@ -128,4 +128,9 @@ public class HermanoController {
 		return "redirect:/admin/listarTodos";
 	}
 
+	@GetMapping("/admin/resetearPapeletasPedidasHermanos")
+	public String resetearPapeletasSitio() {
+		hermanoServicio.resetearPapeletaSacada();
+		return "redirect:/admin/listarTodos";
+	}
 }

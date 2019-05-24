@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Hermanos</title>
+<title>Lista de la Cofradía</title>
 <!-- Required meta tags -->
 
 <meta charset="utf-8">
@@ -17,7 +17,6 @@
 <link rel="stylesheet"
 	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
 	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
-
 <link rel="stylesheet" type="text/css"
 	href="/webjars/datatables/1.10.19/css/dataTables.bootstrap4.css">
 <!--Mis estilos-->
@@ -27,35 +26,21 @@
 </head>
 
 <body>
-	<div th:replace="fragments/nav :: header"></div>
-	<div th:replace="fragments/nav :: navAdmin"></div>
-	<ul class="navbar-nav my-2 my-lg-0">
-		<li><a class="btn btn-dark btn-outline-warning mr-sm-2 mt-2 float-right"
-			th:href="@{/admin/listarTodos}">Añadir Papeleta de Sitio</a></li>
-	</ul>
-
 	<div class="row">
 		<div class="col">
-			<h2>Listado de Papeletas de Sitio</h2>
+			<h2>Listado de la Cofradía</h2>
 			<table id="papeletasTabla" class="table table-striped">
 				<thead>
 					<tr>
 						<th>Nombre</th>
 						<th>Apellidos</th>
 						<th>Puesto</th>
-						<th>Fecha</th>
-						<th>Operaciones</th>
 					</tr>
 				</thead>
 				<tr th:each="papeleta : ${listaPapeletas}">
 					<td th:text="${papeleta.hermano.nombre}"></td>
 					<td th:text="${papeleta.hermano.apellidos}"></td>
 					<td th:text="${papeleta.puesto.nombre}"></td>
-					<td th:text="${papeleta.fecha}"></td>
-					<td><a href="#"
-						th:href="@{/admin/editarPapeletaSitio/{id}(id=${papeleta.id})}">Editar</a>
-					| <a th:href="@{/admin/borrarPapeletaSitio/{id}(id=${papeleta.id})}" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR ESTA PAPELETA DE SITIO?');">Borrar</a>
-					</td>
 				</tr>
 			</table>
 		</div>

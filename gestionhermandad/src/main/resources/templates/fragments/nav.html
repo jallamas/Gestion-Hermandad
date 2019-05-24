@@ -46,9 +46,12 @@
 							th:href="@{/admin/listarBajas}">Bajas pendientes</a> <a
 							class="dropdown-item" th:href="@{/admin/renumerarHermanos}"
 							onclick="return confirm('¿ESTÁ SEGURO DE QUE DESEA RENUMERAR LA LISTA DE HERMANOS?');">Renumerar
-							hermanos</a> <a class="dropdown-item"
+							hermanos</a><a class="dropdown-item"
+							th:href="@{/admin/resetearPapeletasPedidasHermanos}"onclick="return confirm('¿ESTÁ SEGURO DE QUE DESEA RESETEAR EL ESTADO DE LAS PAPELETAS DE SITIO DE LOS HERMANOS A -NO SACADA-?');">Resetear
+							papeletas</a> <a class="dropdown-item"
 							th:href="@{/admin/listarHistoricos}">Histórico</a>
-					</div></li>
+					</div>
+				</li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-warning" href="#"
 					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
@@ -56,7 +59,8 @@
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
 						<a class="dropdown-item" href="#">Censo</a> <a
 							class="dropdown-item" th:href="@{/admin/listarTodos}">Búsquedas</a>
-					</div></li>
+					</div>
+				</li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle text-warning" href="#"
 					id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
@@ -66,7 +70,8 @@
 							class="dropdown-item" href="#">Solicitudes puestos</a> <a
 							class="dropdown-item" th:href="@{/admin/listarTodasPapeletas}">Solicitudes
 							Papeletas</a> <a class="dropdown-item" href="#">Mapa cofradía</a>
-					</div></li>
+					</div>
+				</li>
 			</ul>
 			<ul class="navbar-nav my-2 my-lg-0">
 				<li><a class="nav-link nav-outline-warning mr-sm-2"
