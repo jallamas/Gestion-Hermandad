@@ -20,26 +20,22 @@
 <body>
 	<div th:insert="fragments/nav :: header"></div>
 
-	<form
-		th:action="@{/user/nuevaPapeleta/submit}"
-		th:object="${papeletaSitio}" method="post">
-		<input th:if="${papeletaSitio.id != 0}" type="hidden" name="id"
-			th:field="*{id}" />
-			<input type="hidden" th:field="*{hermano}"/>
-		<table>
-			<tr>
-				<td><select id="puesto" class="form-control" th:field="*{puesto}">
-						<option value="">Puesto que ocupará en la procesión</option>
-						<option th:each="puesto : ${puestos}" th:value="${puesto.id}" th:text="${puesto.nombre}">N/S</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td><input type="submit" name="Enviar" value="Enviar datos" /></td>
-			</tr>
-		</table>
-	</form>
-
+	<div class="mx-auto bg-info" style="width: 400px">
+		<form th:action="@{/user/nuevaPapeleta/submit}"
+			th:object="${papeletaSitio}" method="post">
+			<input th:if="${papeletaSitio.id != 0}" type="hidden" name="id"
+				th:field="*{id}" /> <input type="hidden" th:field="*{hermano}" />
+			<fieldset>
+				<legend class="text-warning">Seleccione el puesto que
+					ocupará en la procesión</legend>
+					<p>Las papeletas de sitio de puestos destacados las emite la Hermandad</p> 
+				<select id="puesto" class="form-control" th:field="*{puesto}">
+					<option th:each="puesto : ${puestos}" th:value="${puesto.id}"
+						th:text="${puesto.nombre}">N/S</option>
+				</select><br> <input type="submit" name="Enviar" value="Enviar datos" />
+			</fieldset>
+		</form>
+	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

@@ -10,7 +10,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.salesianostriana.dam.gestionhermandad.model.Hermano;
 import com.salesianostriana.dam.gestionhermandad.services.HermanoServicio;
-
+/**
+ * Clase que lanza la aplicación
+ * @author José Antonio Llamas
+ *
+ */
 @SpringBootApplication
 public class GestionHermandadApplication {
 
