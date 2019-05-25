@@ -22,10 +22,10 @@
 <body>
 	<div th:insert="fragments/nav :: header"></div>
 	<div th:insert="fragments/nav :: navUser"></div>
-
+<div class="bg-info mx-auto">
 	<h2>Información de registro enviada</h2>
 	<h3>(Alta pendiente de validación)</h3>
-	<table>
+	<table  class="tabla mx-auto">
 		<tr>
 			<td>Nombre:</td>
 			<td th:text="${hermanoProvisional.nombre}"></td>
@@ -80,7 +80,7 @@
 			<td th:text="${hermanoProvisional.fechaAlta}"></td>
 		</tr>
 	</table>
-
+</div>
 
 <div th:insert="fragments/nav :: footer"></div>
 

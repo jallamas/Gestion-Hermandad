@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Nuevo hermano</title>
+<title>Datos del hermano</title>
 <!-- Required meta tags -->
 
 <meta charset="utf-8">
@@ -19,39 +19,42 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 </head>
 <body>
 	<div th:insert="fragments/nav :: header"></div>
-	<div th:insert="fragments/nav :: navUser"></div>
+	<div th:insert="fragments/nav :: navAdmin"></div>
 
-	<h3>Bienvenido, introduzca los datos necesarios para el registro</h3>
-
-	<form th:action="@{/registro/submit}" th:object="${hermanoProvisional}"
-		method="post">
-		
-	<fieldset>
+	<form
+		th:action="${hermano.id != 0} ? @{/admin/editarHno/submit} : @{/admin/nuevoHno/submit}"
+		th:object="${hermano}" method="post">
+		<input th:if="${hermano.id != 0}" type="hidden" name="id"
+			th:field="*{id}" />
+		<fieldset>
 			<legend class="text-warning">Datos personales</legend>
+			<label for="numHermano">Número de hermano:&nbsp;&nbsp;</label><input readonly type="number" th:field="*{numHermano}"placeholder="Se asignará automáticamente"/>
+			<label for="fechaNacimiento">Fecha de nacimiento:&nbsp;&nbsp;</label><input type="date" th:field="*{fechaNacimiento}" /><br><br>
 			<label for="nombre">Nombre:&nbsp;&nbsp;</label><input type="text" th:field="*{nombre}" />
 			<label for="apellidos">Apellidos:&nbsp;&nbsp;</label>
 			<input type="text" th:field="*{apellidos}" />
-			<label for="fechaNacimiento">Fecha de nacimiento:&nbsp;&nbsp;</label><input type="date" th:field="*{fechaNacimiento}" />
 			<br><br>
 		</fieldset>
 		<fieldset>
 			<legend class="text-warning">Datos de Contacto</legend>
 			<label for="telefono">Teléfono:&nbsp;&nbsp;</label><input type="text" th:field="*{telefono}" />
 			<label for="movil">Móvil:&nbsp;&nbsp;</label><input type="text" th:field="*{movil}" />
-			<label for="direccion">Dirección:&nbsp;&nbsp;</label><input type="text" th:field="*{direccion}" />
-			<label for="localidad">Localidad:&nbsp;&nbsp;</label><input type="text" th:field="*{localidad}" /><br><br>
+			<label for="direccion">Dirección:&nbsp;&nbsp;</label><input type="text" th:field="*{direccion}" /><br><br>
+			<label for="localidad">Localidad:&nbsp;&nbsp;</label><input type="text" th:field="*{localidad}" />
 			<label for="provincia">Provincia:&nbsp;&nbsp;</label><input type="text" th:field="*{provincia}" />
-			<label for="codigoPostal">Código Postal:&nbsp;&nbsp;</label><input type="text" th:field="*{codigoPostal}" size="10px"/>
+			<label for="codigoPostal">Código Postal:&nbsp;&nbsp;</label><input type="text" th:field="*{codigoPostal}" size="10px"/><br><br>
 			<label for="pais">País:&nbsp;&nbsp;</label><input type="text" th:field="*{pais}" />
 			<label for="email">Email:&nbsp;&nbsp;</label><input type="email" th:field="*{email}" /><br><br>
 		</fieldset>
 		<fieldset>
 				<legend class="text-warning">Datos de Usuario</legend>
 			<label for="usuario">Usuario:&nbsp;&nbsp;</label><input type="text" th:field="*{usuario}" required />
-			<label for="password">Contraseña:&nbsp;&nbsp;</label><input type="password" th:field="*{password}" id="pwd1"/>
-			<label>Repite la contraseña</label><input type="password" id="pwd2" required><label id="pwd"></label><br><br>
+			<input type="hidden" th:field="*{password}" id="pwd1"/>
+			<label for="isAdmin">Es administrador:&nbsp;&nbsp;</label><input type="checkbox" th:field="*{Admin}" />
+			<label for="fechaAlta">Fecha de alta:&nbsp;&nbsp;</label><input readonly type="date" th:field="*{fechaAlta}" /><br><br>
 			<input type="submit" name="Enviar" value="Enviar datos" />
 		</fieldset>
+			
 	</form>
 <div th:insert="fragments/nav :: footer"></div>
 	<!-- Optional JavaScript -->

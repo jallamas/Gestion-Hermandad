@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.gestionhermandad.model.Hermano;
+import com.salesianostriana.dam.gestionhermandad.services.HermanoProvisionalServicio;
 import com.salesianostriana.dam.gestionhermandad.services.HermanoServicio;
 
 /**
@@ -26,9 +27,11 @@ import com.salesianostriana.dam.gestionhermandad.services.HermanoServicio;
 public class HermanoController {
 
 	private HermanoServicio hermanoServicio;
+	private HermanoProvisionalServicio hermanoProvisionalServicio;
 
-	public HermanoController(HermanoServicio hermanoServicio) {
+	public HermanoController(HermanoServicio hermanoServicio, HermanoProvisionalServicio hermanoProvisionalServicio) {
 		this.hermanoServicio = hermanoServicio;
+		this.hermanoProvisionalServicio = hermanoProvisionalServicio;
 	}
 
 	@GetMapping("/admin/listarTodos")
@@ -51,24 +54,24 @@ public class HermanoController {
 
 	@PostMapping("/admin/nuevoHno/submit")
 	public String procesarAlta(@ModelAttribute("hermano") Hermano hermano) {
-		hermano.setFechaAlta(LocalDate.now());
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		hermano.setPassword(passwordEncoder.encode(hermano.getPassword()));
-		hermanoServicio.save(hermano);
-		return "redirect:/admin/listarTodos";
+		if (hermanoProvisionalServicio.findByUsuario(hermano.getUsuario()).isEmpty()) {
+			hermano.setFechaAlta(LocalDate.now());
+			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			hermano.setPassword(passwordEncoder.encode(hermano.getPassword()));
+			hermanoServicio.save(hermano);
+			return "redirect:/admin/listarTodos";
+		} else {
+			return "/usuarioExistente";
+		}
 	}
 
 	@GetMapping("/admin/editarHno/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
-
 		Hermano hnoEditar = hermanoServicio.findById(id);
 		model.addAttribute("hermano", hnoEditar);
-		return "hermano_form";
+		return "admin/hermano_form_admin_edit";
 	}
 
-	/**
-	 * Método que procesa la respuesta del formulario al editar
-	 */
 	@PostMapping("/admin/editarHno/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("hermano") Hermano hno) {
 		hermanoServicio.edit(hno);
@@ -81,9 +84,6 @@ public class HermanoController {
 		return "user/hermano_form";
 	}
 
-	/**
-	 * Método que procesa la respuesta del formulario al editar
-	 */
 	@PostMapping("user/editarHno/submit")
 	public String procesarFormularioEdicionUser(@ModelAttribute("hermano") Hermano hermano) {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -109,7 +109,7 @@ public class HermanoController {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
 		return "redirect:/admin/listarBajas";
 	}
-	
+
 	@GetMapping("/admin/anularBajaHno/{id}")
 	public String anularBajaHermano(@PathVariable("id") long id) {
 		hermanoServicio.anularBaja(id);

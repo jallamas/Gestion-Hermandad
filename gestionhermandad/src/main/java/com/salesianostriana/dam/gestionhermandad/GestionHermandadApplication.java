@@ -18,6 +18,11 @@ public class GestionHermandadApplication {
 		SpringApplication.run(GestionHermandadApplication.class, args);
 	}
 
+/**
+ * Método que encripta las contraseñas de todos los hermanos introducidos en el data.sql
+ * @param hermanoServicio Servicio que usamos
+ * @param passwordEncoder el objeto de la clase BCryptPasswordEncoder que usamos para encriptar
+ */
 	@Bean
 	public CommandLineRunner init(HermanoServicio hermanoServicio, BCryptPasswordEncoder passwordEncoder) {
 		return args -> {
@@ -28,28 +33,6 @@ public class GestionHermandadApplication {
 				h.setPassword(passwordEncoder.encode(h.getPassword()));
 				hermanoServicio.edit(h);
 			}
-
-//			Hermano hno = new Hermano();
-//			hno.setAdmin(true);
-//			hno.setEmail("admin@admin.com");
-//			hno.setNombre("José Antonio");
-//			hno.setApellidos("Llamas Álvarez");
-//			hno.setUsuario("admin");
-//			hno.setSolicitaBaja(false);
-//			hno.setPassword(passwordEncoder.encode("admin"));
-//
-//			servicio.save(hno);
-
-//			Hermano hno1 = new Hermano();
-//			hno1.setAdmin(false);
-//			hno1.setEmail("user@user.com");
-//			hno1.setNombre("Esperanza");
-//			hno1.setApellidos("Escacena");
-//			hno1.setUsuario("user");
-//			hno1.setSolicitaBaja(false);
-//			hno1.setPassword(passwordEncoder.encode("1234"));
-//
-//			servicio.save(hno1);
 
 		};
 	}
