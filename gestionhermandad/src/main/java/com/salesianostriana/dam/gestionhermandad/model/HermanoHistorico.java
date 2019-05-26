@@ -73,5 +73,4 @@ public class HermanoHistorico extends Hermano {
 				fechaNacimiento, email, usuario, password, fechaAlta);
 		this.fechaBaja = fechaBaja;
 	}
-
 }
