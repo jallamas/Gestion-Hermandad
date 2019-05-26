@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.salesianostriana.dam.gestionhermandad.services;
 
 import org.springframework.stereotype.Service;

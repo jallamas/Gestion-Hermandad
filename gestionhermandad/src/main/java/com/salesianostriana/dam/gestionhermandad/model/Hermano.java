@@ -38,6 +38,8 @@ public class Hermano extends HermanoProvisional {
 	private boolean papeletaSacada;
 
 	/**
+	 * constructor con todos los parámetros
+	 * 
 	 * @param numExpediente   Número del expediente
 	 * @param nombre          Nombre del hermano
 	 * @param apellidos       Apellidos del hermano.
@@ -73,6 +75,27 @@ public class Hermano extends HermanoProvisional {
 		this.papeletaSacada = false;
 	}
 
+	/**
+	 * Constructor con los parámetros mínimos para recoger los datos de un hermano
+	 * provisional.
+	 * 
+	 * @param numExpediente   Número del expediente
+	 * @param nombre          Nombre del hermano
+	 * @param apellidos       Apellidos del hermano.
+	 * @param telefono        Teléfono fijo.
+	 * @param movil           Teléfono móvil.
+	 * @param direccion       Dirección postal.
+	 * @param provincia       Provincia de residencia.
+	 * @param localidad       Localidad de residencia.
+	 * @param codigoPostal    Código Postal/ZIP code.
+	 * @param pais            Pais de residencia.
+	 * @param fechaNacimiento Fecha de nacimiento.
+	 * @param email           Correo electrónico.
+	 * @param usuario         Nombre de usuario para acceder al área de gestión de
+	 *                        la web.
+	 * @param password        Contraseña para el área de gestión.
+	 * @param fechaAlta       Fecha de confirmación del alta en la Hermandad.
+	 */
 	public Hermano(long numExpediente, String nombre, String apellidos, String telefono, String movil, String direccion,
 			String provincia, String localidad, String codigoPostal, String pais, LocalDate fechaNacimiento,
 			String email, String usuario, String password, LocalDate fechaAlta) {

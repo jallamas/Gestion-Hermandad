@@ -15,5 +15,10 @@ import com.salesianostriana.dam.gestionhermandad.model.Puesto;
  */
 public interface PuestoRepository extends JpaRepository<Puesto, Long> {
 
+	/**
+	 * Consulta que devuelve una lista de los puestos en la cofradía que NO son
+	 * considerados puestos destacados.
+	 * 
+	 */
 	List<Puesto> findAllByEsDestacadoFalse();
 }

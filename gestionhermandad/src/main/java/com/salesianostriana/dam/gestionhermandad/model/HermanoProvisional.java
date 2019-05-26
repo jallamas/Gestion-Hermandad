@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.salesianostriana.dam.gestionhermandad.model;
 
 import java.time.LocalDate;

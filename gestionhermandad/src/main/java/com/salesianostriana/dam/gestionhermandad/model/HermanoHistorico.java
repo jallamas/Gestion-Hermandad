@@ -34,7 +34,20 @@ public class HermanoHistorico extends Hermano {
 
 	private LocalDate fechaBaja;
 
+//	public HermanoHistorico(long numExpediente, String nombre, String apellidos, String telefono, String movil,
+//			String direccion, String provincia, String localidad, String codigoPostal, String pais,
+//			LocalDate fechaNacimiento, String email, String usuario, String password, LocalDate fechaAlta,
+//			int numHermano, LocalDate fechaBaja) {
+//		super(numExpediente, nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais,
+//				fechaNacimiento, email, usuario, password, fechaAlta, numHermano);
+//		this.fechaBaja = fechaBaja;
+//	}
+
 	/**
+	 * Constructor con los datos necesarios para almacenar el hermano en el
+	 * histórico
+	 * 
+	 * @param numExpediente   Número de expediente del hermano
 	 * @param nombre          Nombre del hermano
 	 * @param apellidos       Apellidos del hermano.
 	 * @param telefono        Teléfono fijo.
@@ -50,24 +63,12 @@ public class HermanoHistorico extends Hermano {
 	 *                        la web.
 	 * @param password        Contraseña para el área de gestión.
 	 * @param fechaAlta       Fecha de confirmación del alta en la Hermandad.
-	 * @param numHermano      Número de hermano que indica la antigüedad.
-	 * @param isAdmin         Booleano que indica si es administrador de la
-	 *                        aplicación.
 	 * @param fechaBaja       Fecha en la que causó baja en la Hermandad.
 	 */
 	public HermanoHistorico(long numExpediente, String nombre, String apellidos, String telefono, String movil,
 			String direccion, String provincia, String localidad, String codigoPostal, String pais,
 			LocalDate fechaNacimiento, String email, String usuario, String password, LocalDate fechaAlta,
-			int numHermano, LocalDate fechaBaja) {
-		super(numExpediente, nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais,
-				fechaNacimiento, email, usuario, password, fechaAlta, numHermano);
-		this.fechaBaja = fechaBaja;
-	}
-	
-	public HermanoHistorico(long numExpediente, String nombre, String apellidos, String telefono, String movil,
-			String direccion, String provincia, String localidad, String codigoPostal, String pais,
-			LocalDate fechaNacimiento, String email, String usuario, String password, LocalDate fechaAlta,
-			 LocalDate fechaBaja) {
+			LocalDate fechaBaja) {
 		super(numExpediente, nombre, apellidos, telefono, movil, direccion, provincia, localidad, codigoPostal, pais,
 				fechaNacimiento, email, usuario, password, fechaAlta);
 		this.fechaBaja = fechaBaja;

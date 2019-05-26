@@ -60,6 +60,19 @@ public class HermanoController {
 	}
 
 	/**
+	 * Método que muestra una lista de todos los hermanos activos con derecho a voto
+	 * (mayores de edad)
+	 * 
+	 * @param model Modelo para pasar la lista a la plantilla
+	 * @return La plantilla que pinta la lista
+	 */
+	@GetMapping("/admin/mostrarCenso")
+	public String listarCenso(Model model) {
+		model.addAttribute("listaHerm", hermanoServicio.mostrarCenso());
+		return "admin/censo";
+	}
+
+	/**
 	 * Método que muestra una lista de todos los hermanos activos que hayan
 	 * solicitado la baja en la Hermandad
 	 * 
@@ -169,43 +182,92 @@ public class HermanoController {
 		return "redirect:/user/vistaHermanoEditado";
 	}
 
-	
+	/**
+	 * Método que muestra los datos del hermano logueado después de haberlos
+	 * editado.
+	 * 
+	 * @param model Modelo para pasar los datos a la plantilla
+	 * @param p     Objeto de la clase principal con el que obtenemos el hermano
+	 *              logueqado en ese momento
+	 * @return Plantilla que muestra los datos
+	 */
 	@GetMapping("/user/vistaHermanoEditado")
 	public String mostrarDatosEditados(Model model, Principal p) {
 		model.addAttribute("hermano", hermanoServicio.buscarHermanoLogeado(p));
 		return "user/vistaHermanoEditado";
 	}
 
+	/**
+	 * Método que recoge los datos del hermano correspondiente en el listado de
+	 * hermanos del administrador y le pasa el id al servicio que los pasa a
+	 * HermanoHistórico
+	 * 
+	 * @param id el id del hermano
+	 * @return Plantilla que vuelve a pintar la lista actualizada.
+	 */
 	@GetMapping("/admin/pasarHnoHist/{id}")
 	public String pasarHnoHist(@PathVariable("id") long id) {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
 		return "redirect:/admin/listarTodos";
 	}
 
+	/**
+	 * Método que pasa a Hermano histórico al hermano que lo había solicitado,
+	 * seleccionándolo de la lista.
+	 * 
+	 * @param id El id del hermano
+	 * @return Plantilla que pinta la lista de solicitudes de baja actualizada
+	 */
 	@GetMapping("/admin/confirmarBajaHno/{id}")
 	public String confirmarBajaHermano(@PathVariable("id") long id) {
 		hermanoServicio.pasarHermanoHistorico(hermanoServicio.findById(id));
 		return "redirect:/admin/listarBajas";
 	}
 
+	/**
+	 * Método que cancela la solicitud de baja de un hermano seleccionándolo de la
+	 * lista
+	 * 
+	 * @param id id del hermano
+	 * @return Plantilla que pinta la lista de solicitudes de baja actualizada
+	 */
 	@GetMapping("/admin/anularBajaHno/{id}")
 	public String anularBajaHermano(@PathVariable("id") long id) {
 		hermanoServicio.anularBaja(id);
 		return "redirect:/admin/listarBajas";
 	}
 
+	/**
+	 * Método mediante el que un hermano solicita la baja en la Hermandad, llamando
+	 * al servicio que lo hace
+	 * 
+	 * @param id id del hermano
+	 * @return Devuelve la pantalla al inicio de la aplicación
+	 */
 	@GetMapping("/user/solicitarBaja/{id}")
 	public String solicitarBaja(@PathVariable("id") long id) {
 		hermanoServicio.solicitarBaja(id);
 		return "redirect:/";
 	}
 
+	/**
+	 * Método que permite al administrador renumerar a los hermanos, llamando al
+	 * servicio que lo hace.
+	 * 
+	 * @return Plantilla que pinta la lista de hermanos actualizada
+	 */
 	@GetMapping("/admin/renumerarHermanos")
 	public String renumerarHermano() {
 		hermanoServicio.renumerarHermanos();
 		return "redirect:/admin/listarTodos";
 	}
 
+	/**
+	 * Método que resetea el atributo "papeletaSolicitada" de todos los hermanos a
+	 * "false" para que puedan solicitar nuevas papeletas al siguiente año
+	 * 
+	 * @return Plantilla que pinta la lista de hermanos
+	 */
 	@GetMapping("/admin/resetearPapeletasPedidasHermanos")
 	public String resetearPapeletasSitio() {
 		hermanoServicio.resetearPapeletaSacada();

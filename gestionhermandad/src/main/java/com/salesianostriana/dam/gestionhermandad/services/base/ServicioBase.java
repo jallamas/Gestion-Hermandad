@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * @author jallamas
+ * @author José Antonio Llamas Álvarez
  *
  */
 public abstract class ServicioBase<T, ID, R extends JpaRepository<T, ID>> {

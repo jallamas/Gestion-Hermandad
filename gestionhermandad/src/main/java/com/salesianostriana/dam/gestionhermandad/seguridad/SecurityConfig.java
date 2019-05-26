@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.salesianostriana.dam.gestionhermandad.seguridad;
 
 import org.springframework.context.annotation.Bean;
@@ -13,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * @author jallamas
+ * @author José Antonio Llamas Álvarez
  *
  */
 @Configuration
@@ -36,29 +33,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 
+	/**
+	 * Método que indica qué contenidos puede ver el admin, usuario logueado o sin
+	 * loguear. También se expresa a qué plantilla se accede una vez se realiza el
+	 * login o el logout y dónde dirigir la app en el caso de intentar acceder a un
+	 * contenido protegido.
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	//@formatter:off
+		// @formatter:off
 		http.authorizeRequests()
-				.antMatchers("/h2-console/**", "/img/**", "/css/**", "/js/**", "/webjars/**", "/", "/quienes_somos", "/index", "/login",
-						"/registro", "/registro/submit").permitAll()
-				.antMatchers("/admin/**","/user/**").hasAnyRole("ADMIN")
-				.antMatchers("/user/**").hasAnyRole("USER")
-			.anyRequest()
-				.authenticated()
-				.and()
-			.formLogin().loginPage("/login").defaultSuccessUrl("/")
-				.permitAll()
-				.and()
-			.logout().logoutUrl("/logout").logoutSuccessUrl("/")
-				.permitAll()
-				.and()
-			.exceptionHandling()
-				.accessDeniedPage("/");
+				.antMatchers("/h2-console/**", "/img/**", "/css/**", "/js/**", "/webjars/**", "/", "/quienes_somos",
+						"/index", "/login", "/registro", "/registro/submit")
+						.permitAll()
+				.antMatchers("/admin/**", "/user/**")
+						.hasAnyRole("ADMIN")
+				.antMatchers("/user/**")
+						.hasAnyRole("USER")
+						.anyRequest()
+						.authenticated()
+						.and()
+				.formLogin()
+						.loginPage("/login").defaultSuccessUrl("/")
+						.permitAll()
+						.and()
+				.logout()
+						.logoutUrl("/logout").logoutSuccessUrl("/")
+						.permitAll()
+						.and()
+				.exceptionHandling().accessDeniedPage("/");
 
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
-	//@formatter:on
+		// @formatter:on
 	}
 
 }

@@ -20,7 +20,10 @@ import com.salesianostriana.dam.gestionhermandad.services.PapeletaSitioServicio;
 import com.salesianostriana.dam.gestionhermandad.services.PuestoServicio;
 
 /**
- * @author jallamas
+ * Clase que tiene los métodos que controlan las plantillas que permiten manejar
+ * al hermano las papeletas de sitio.
+ * 
+ * @author José Antonio Llamas Álvarez
  *
  */
 @Controller
@@ -38,6 +41,18 @@ public class PapeletaSitioHermanoController {
 		this.papeletaSitioServicio = papeletaSitioServicio;
 	}
 
+	/**
+	 * Método que permite al hermano logueado solicitar su papeleta de sitio. En el
+	 * caso de que ya tuviera una (controlado por el atributo booleano
+	 * papeletaSacada del objeto Hermano), se mostrará una pantalla de error.
+	 * 
+	 * @param model Modelo para pasar a la plantilla los datos de la papeleta y la
+	 *              lista de puestos.
+	 * @param p     Objeto de la clase Principal que nos permite obtener la
+	 *              información del hermano logueado
+	 * @return Plantilla que muestra el formulario con los puestos a elegir para
+	 *         obtener la papeleta.
+	 */
 	@GetMapping("/user/nuevaPapeleta")
 	public String mostrarFormulario(Model model, Principal p) {
 		Hermano hno = hermanoServicio.buscarHermanoLogeado(p);
@@ -48,7 +63,6 @@ public class PapeletaSitioHermanoController {
 			hermanoServicio.edit(hno);
 			PapeletaSitio papeletaSitio = new PapeletaSitio();
 			papeletaSitio.setHermano(hno);
-			
 			model.addAttribute("papeletaSitio", papeletaSitio);
 			model.addAttribute("puestos", puestoServicio.listarPuestosNormales());
 			// model.addAttribute("puestos", puestoServicio.findAll());
@@ -56,6 +70,13 @@ public class PapeletaSitioHermanoController {
 		}
 	}
 
+	/**
+	 * Método que procesa el alta de la papeleta de sitio y la almacena en la bbdd.
+	 * 
+	 * @param papeletaSitio El objeto de la papeleta de sitio con los datos
+	 *                      elegidos.
+	 * @return Plantilla que muestra el inicio de la aplicación
+	 */
 	@PostMapping("/user/nuevaPapeleta/submit")
 	public String procesarPapeleta(@ModelAttribute("papeletaSitio") PapeletaSitio papeletaSitio) {
 		papeletaSitio.setFecha(LocalDate.now());

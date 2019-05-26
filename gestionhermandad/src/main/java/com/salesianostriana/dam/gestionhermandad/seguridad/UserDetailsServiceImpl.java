@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.salesianostriana.dam.gestionhermandad.seguridad;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -39,7 +36,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			userBuilder.disabled(false);
 			userBuilder.password(hermano.getPassword());
 			if (hermano.isAdmin()) {
-				// Este caso indica que un ADMIN también puede hacer todo lo que hace un USER
 				userBuilder.authorities(new SimpleGrantedAuthority("ROLE_ADMIN"));
 			} else {
 				userBuilder.authorities(new SimpleGrantedAuthority("ROLE_USER"));

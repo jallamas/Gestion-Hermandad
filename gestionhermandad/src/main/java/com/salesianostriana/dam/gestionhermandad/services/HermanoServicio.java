@@ -31,7 +31,7 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 	protected HermanoRepository hermanoRepositorio;
 
 	/**
-	 * Método para pasar a histórico un hermano.
+	 * Método para pasar a histórico un hermano. Añade la fecha de baja actual.
 	 * 
 	 * @param hermano El hermano que se quiere pasar a histórico.
 	 * @return Devuelve el objeto hermano histórico correspondiente.
@@ -58,8 +58,10 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 		h.setSolicitaBaja(true);
 		hermanoServicio.edit(h);
 	}
+
 	/**
 	 * Método que anula la solicitud de baja en la Hermandad de un hermano
+	 * 
 	 * @param id El id del Hermano
 	 */
 	public void anularBaja(Long id) {
@@ -89,6 +91,11 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 		return repositorio.findByFechaAlta();
 	}
 
+	/**
+	 * Método que renumera el atributo numHermano de los hermanos activos. Se
+	 * realiza obteniendo un List de los hermanos activos ordenados por fecha de
+	 * alta y seteando a cada uno la posición en la lista más uno.
+	 */
 	public void renumerarHermanos() {
 		for (Hermano h : hermanosPorFechaAlta()) {
 			h.setNumHermano(hermanosPorFechaAlta().indexOf(h) + 1);

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Hermanos</title>
+<title>Censo</title>
 <!-- Required meta tags -->
 
 <meta charset="utf-8">
@@ -29,10 +29,15 @@
 <body>
 	<div th:replace="fragments/nav :: header"></div>
 	<div th:replace="fragments/nav :: navAdmin"></div>
-	
+	<ul class="navbar-nav my-2 my-lg-0">
+		<li><a
+			class="btn btn-dark btn-outline-warning mr-sm-2 mt-2 float-right"
+			th:href="@{/admin/nuevoHno}">Añadir hermano</a></li>
+	</ul>
+
 	<div class="row">
 		<div class="col">
-			<h2>Listado de Solicitudes de baja</h2>
+			<h2>Listado de Hermanos con derecho a voto</h2>
 			<table id="hermanosTabla" class="table table-striped">
 				<thead>
 					<tr>
@@ -43,7 +48,6 @@
 						<th>Móvil</th>
 						<th>Email</th>
 						<th>Fecha de Alta</th>
-						<th>Operaciones</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -55,19 +59,13 @@
 						<td th:text="${hermano.movil}"></td>
 						<td th:text="${hermano.email}"></td>
 						<td th:text="${hermano.fechaAlta}"></td>
-						<td><a href="#"
-							th:href="@{/admin/confirmarBajaHno/{id}(id=${hermano.id})}"
-							onclick="return confirm('¿SEGURO QUE DESEA PASAR ESTE HERMANO AL HISTÓRICO?');">Confirmar Baja</a> | <a href="#"
-							th:href="@{/admin/anularBajaHno/{id}(id=${hermano.id})}"
-							onclick="return confirm('¿SEGURO QUE DESEA ANULAR ESTA SOLICITUD DE BAJA?');">Anular Baja</a>
-						</td>
 					</tr>
 				</tbody>
 			</table>
 
 		</div>
 	</div>
-<div th:insert="fragments/nav :: footer"></div>
+	<div th:insert="fragments/nav :: footer"></div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<!--Datatables-->

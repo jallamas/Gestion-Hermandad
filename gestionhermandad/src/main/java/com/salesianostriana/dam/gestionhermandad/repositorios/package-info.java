@@ -1,5 +1,5 @@
 /**
- * Contiene las clases que modelan los objetos principales de nuestra
+ * Contiene las clases que tienen los repósitorios de los objetos de nuestra
  * aplicación.
  */
 package com.salesianostriana.dam.gestionhermandad.repositorios;
