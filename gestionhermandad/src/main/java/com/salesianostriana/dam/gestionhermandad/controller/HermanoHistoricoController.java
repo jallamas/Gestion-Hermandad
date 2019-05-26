@@ -41,9 +41,9 @@ public class HermanoHistoricoController {
 	 * @param id El id del hermano
 	 * @return Plantilla que muestra la lista de hermanos históricos actualizada.
 	 */
-	@GetMapping("admin/reactivarHnoHist/{id}")
+	@GetMapping("/admin/reactivarHnoHist/{id}")
 	public String pasarHnoHist(@PathVariable("id") long id) {
 		hermanoHistoricoServicio.reactivarHermanoHistorico(hermanoHistoricoServicio.findById(id));
-		return "redirect:/admin/listaHermanosHist";
+		return "redirect:/admin/listarHistoricos";
 	}
 }
