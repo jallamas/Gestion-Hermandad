@@ -25,6 +25,15 @@ public class HermanoServicioTests {
 	HermanoProvisionalServicio hermanoProvisionalServicio;
 
 	@Test
+	public void testPasarHermanoHistorico() {
+		Hermano nuevo = new Hermano(1000, "Pepe", "Pérez", "654654654", "987654321", "calle", "sevilla", "sev",
+				"123456", "españa", LocalDate.of(1999, 05, 03), "ad@ad.es", "nuevo", "1324", LocalDate.now());
+		hermanoServicio.save(nuevo);
+
+		assertEquals(nuevo.getUsuario(), hermanoServicio.pasarHermanoHistorico(nuevo).getUsuario());
+	}
+
+	@Test
 	public void testSolicitarBaja() {
 		Hermano hno = new Hermano(1000, "Pepe", "Pérez", "654654654", "987654321", "calle", "sevilla", "sev", "123456",
 				"españa", LocalDate.of(1999, 05, 03), "ad@ad.es", "pruebas1", "1324", LocalDate.now());
@@ -32,7 +41,6 @@ public class HermanoServicioTests {
 		hermanoServicio.solicitarBaja(hno.getId());
 
 		assertEquals(true, hermanoServicio.buscarPorUsuario("pruebas1").isSolicitaBaja());
-//		assertEquals(true, hermanoServicio.findById((long) 200).isSolicitaBaja());
 	}
 
 	@Test
@@ -73,8 +81,7 @@ public class HermanoServicioTests {
 		Hermano hno = new Hermano(1000, "Pepe", "Pérez", "654654654", "987654321", "calle", "sevilla", "sev", "123456",
 				"españa", LocalDate.of(1999, 05, 03), "ad@ad.es", "pruebas4", "1324", LocalDate.now());
 		hermanoServicio.save(hno);
-		assertEquals(true, hermanoServicio.mostrarCenso()
-				.contains(hermanoServicio.findById(hermanoServicio.buscarPorUsuario("pruebas4").getId())));
+		assertEquals(true, hermanoServicio.mostrarCenso().contains(hermanoServicio.buscarPorUsuario("pruebas4")));
 	}
 
 	@Test
