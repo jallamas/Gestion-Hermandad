@@ -26,7 +26,7 @@ public class HermanoProvisionalServicioTest {
 	@Test
 	public void testValidarHermanoProvisional() {
 		HermanoProvisional actual = new HermanoProvisional(1000, "Pepe", "Pérez", "654654654", "987654321", "calle",
-				"sevilla", "sev", "123456", "españa", LocalDate.of(1999, 05, 03), "ad@ad.es", "pruebas1", "1324",
+				"sevilla", "sev", "123456", "españa", LocalDate.of(1999, 05, 03), "ad@ad.es", "pruebas15", "1324",
 				LocalDate.now());
 		hermanoProvisionalServicio.save(actual);
 		assertEquals(actual.getUsuario(), hermanoProvisionalServicio.validarHermanoProvisional(actual).getUsuario());

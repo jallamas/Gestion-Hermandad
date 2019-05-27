@@ -23,8 +23,6 @@
 
 	<h3>Datos del puesto en la cofradía</h3>
 
-<!-- 	<form th:action="@{/nuevopuesto/submit}" th:object="${puesto}" -->
-<!-- 		method="post"> -->
 		<form
 		th:action="${puesto.id != 0} ? @{/admin/editarpuesto/submit} : @{/admin/nuevopuesto/submit}"
 		th:object="${puesto}" method="post">
@@ -33,19 +31,19 @@
 		<table>
 			<tr>
 				<td><label for="nombre">Nombre</label></td>
-				<td><input type="text" th:field="*{nombre}" /></td>
+				<td><input type="text" th:field="*{nombre}" required/></td>
 			</tr>
 			<tr>
 				<td><label for="numero">Número</label></td>
-				<td><input type="number" th:field="*{numero}" /></td>
+				<td><input type="number" th:field="*{numero}" required/></td>
 			</tr>
 			<tr>
 				<td><label for="precio">Precio</label></td>
-				<td><input type="text" th:field="*{precio}" /></td>
+				<td><input type="text" th:field="*{precio}" required/></td>
 			</tr>
 			<tr>
 				<td><label for="paso">Paso</label></td>
-				<td><input type="text" th:field="*{paso}" /></td>
+				<td><input type="number" th:field="*{paso}" required/></td>
 			</tr>
 			<tr>
 				<td><label for="destacado">Destacado</label></td>

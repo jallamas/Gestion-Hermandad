@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Datos del hermano</title>
+<title>Nuevo puesto</title>
 <!-- Required meta tags -->
 
 <meta charset="utf-8">
@@ -22,7 +22,7 @@
 	<div th:insert="fragments/nav :: navAdmin"></div>
 
 	<div class="mx-auto bg-info" style="width: 400px">
-		<form th:action="@{/admin/nuevaPapeleta/submit}"
+		<form th:action="@{/admin/editarPapeletaSitio/submit}"
 			th:object="${papeletaSitio}" method="post">
 			<input th:if="${papeletaSitio.id != 0}" type="hidden" name="id"
 				th:field="*{id}" /> <input type="hidden" th:field="*{hermano}" />
@@ -38,7 +38,7 @@
 			</fieldset>
 		</form>
 	</div>
-	<div th:insert="fragments/nav :: footer"></div>
+<div th:insert="fragments/nav :: footer"></div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

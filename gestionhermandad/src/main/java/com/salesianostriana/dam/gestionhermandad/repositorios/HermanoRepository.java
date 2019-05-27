@@ -50,7 +50,7 @@ public interface HermanoRepository extends JpaRepository<Hermano, Long> {
 	 * 
 	 * @param fechaReferencia Fecha
 	 */
-//	@Query("select h from Hermano h where TYPE(h)=Hermano and h.fechaNacimiento <= :fechaReferencia order by h.apellidos")
+
 	List<Hermano> findByFechaNacimientoBefore(@Param("fechaReferencia") LocalDate fechaReferencia);
 
 	/**

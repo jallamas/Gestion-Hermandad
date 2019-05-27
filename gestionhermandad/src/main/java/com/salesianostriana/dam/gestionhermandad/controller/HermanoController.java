@@ -147,12 +147,8 @@ public class HermanoController {
 	 */
 	@PostMapping("/admin/editarHno/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("hermano") Hermano hno) {
-		if (hermanoProvisionalServicio.findByUsuario(hno.getUsuario()).isEmpty()) {
-			hermanoServicio.edit(hno);
-			return "redirect:/admin/listarTodos";
-		} else {
-			return "/usuarioExistente";
-		}
+		hermanoServicio.edit(hno);
+		return "redirect:/admin/listarTodos";
 	}
 
 	/**

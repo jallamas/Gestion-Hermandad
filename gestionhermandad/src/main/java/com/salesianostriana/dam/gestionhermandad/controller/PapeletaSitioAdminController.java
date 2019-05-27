@@ -97,10 +97,34 @@ public class PapeletaSitioAdminController {
 	}
 
 	/**
+	 * Método que muestra un formulario con los datos de una papeleta para editarla.
+	 * 
+	 * @param id    El id de la papeleta a editar
+	 * @param model Model que le pasa los datos al formulario
+	 * @return Plantilla que muestra el formulario con los datos.
+	 */
+	@GetMapping("/admin/editarPapeletaSitio/{id}")
+	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
+		PapeletaSitio papeletaEditar = papeletaSitioServicio.findById(id);
+		model.addAttribute("papeletaSitio", papeletaEditar);
+		model.addAttribute("puestos", puestoServicio.findAll());
+		return "admin/editarpapeleta_form";
+	}
+
+	/**
+	 * Método que procesa la respuesta del formulario al editar.
+	 */
+	@PostMapping("/admin/editarPapeletaSitio/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("papeletaSitio") PapeletaSitio papeleta) {
+		papeletaSitioServicio.edit(papeleta);
+		return "redirect:/admin/listarTodasPapeletas";
+	}
+
+	/**
 	 * Método que permite al administrador borrar una papeleta de sitio de la lista.
 	 * 
 	 * @param id El id de la papeleta a borrar
-	 * @return Plantilla que pinta la lista de papeletaas actualizada.
+	 * @return Plantilla que pinta la lista de papeletas actualizada.
 	 */
 	@GetMapping("/admin/borrarPapeletaSitio/{id}")
 	public String borrar(@PathVariable("id") long id) {

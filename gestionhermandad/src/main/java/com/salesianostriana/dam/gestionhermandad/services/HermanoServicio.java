@@ -28,7 +28,6 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 	private HermanoServicio hermanoServicio;
 	@Autowired
 	private HermanoHistoricoServicio hermanoHistoricoServicio;
-	protected HermanoRepository hermanoRepositorio;
 
 	/**
 	 * Método para pasar a histórico un hermano. Añade la fecha de baja actual.
@@ -110,7 +109,7 @@ public class HermanoServicio extends ServicioBase<Hermano, Long, HermanoReposito
 	 */
 	public List<Hermano> mostrarCenso() {
 		LocalDate fechaReferencia = LocalDate.now().minusYears(18);
-		return hermanoRepositorio.findByFechaNacimientoBefore(fechaReferencia);
+		return repositorio.findByFechaNacimientoBefore(fechaReferencia);
 	}
 
 	/**

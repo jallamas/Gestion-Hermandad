@@ -31,7 +31,7 @@ public class HermanoHistoricoServicioTests {
 	public void reactivarHermanoHistorico() {
 
 		HermanoHistorico nuevo = new HermanoHistorico(1000, "Pepe", "Pérez", "654654654", "987654321", "calle",
-				"sevilla", "sev", "123456", "españa", LocalDate.of(1999, 05, 03), "ad@ad.es", "pruebas1", "1324",
+				"sevilla", "sev", "123456", "españa", LocalDate.of(1999, 05, 03), "ad@ad.es", "pruebas10", "1324",
 				LocalDate.now(), null);
 		hermanoHistoricoServicio.save(nuevo);
 				
