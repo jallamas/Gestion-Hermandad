@@ -10,8 +10,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.salesianostriana.dam.gestionhermandad.model.Hermano;
 import com.salesianostriana.dam.gestionhermandad.services.HermanoServicio;
+
 /**
  * Clase que lanza la aplicación
+ * 
  * @author José Antonio Llamas
  *
  */
@@ -22,11 +24,15 @@ public class GestionHermandadApplication {
 		SpringApplication.run(GestionHermandadApplication.class, args);
 	}
 
-/**
- * Método que encripta las contraseñas de todos los hermanos introducidos en el data.sql
- * @param hermanoServicio Servicio que usamos
- * @param passwordEncoder el objeto de la clase BCryptPasswordEncoder que usamos para encriptar
- */
+	/**
+	 * Método que encripta las contraseñas de todos los hermanos introducidos en el
+	 * data.sql y renumera los hermanos por antigüedad para comenzar con una base de
+	 * datos coherente.
+	 * 
+	 * @param hermanoServicio Servicio que usamos
+	 * @param passwordEncoder el objeto de la clase BCryptPasswordEncoder que usamos
+	 *                        para encriptar
+	 */
 	@Bean
 	public CommandLineRunner init(HermanoServicio hermanoServicio, BCryptPasswordEncoder passwordEncoder) {
 		return args -> {
@@ -38,6 +44,7 @@ public class GestionHermandadApplication {
 				hermanoServicio.edit(h);
 			}
 
+			hermanoServicio.renumerarHermanos();
 		};
 	}
 }

@@ -59,7 +59,7 @@
 						<td th:text="${hermano.telefono}"></td>
 						<td th:text="${hermano.movil}"></td>
 						<td th:text="${hermano.email}"></td>
-						<td th:text="${hermano.fechaAlta}"></td>
+						<td th:text="${#temporals.format(hermano.fechaAlta, 'dd-MMM-yyyy')}"></td>
 						<td><a href="#"
 							th:href="@{/admin/editarHno/{id}(id=${hermano.id})}">Editar</a> |
 							<a href="#"

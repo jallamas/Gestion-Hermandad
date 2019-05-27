@@ -53,7 +53,7 @@
 					<td th:text="${papeleta.hermano.nombre}"></td>
 					<td th:text="${papeleta.hermano.apellidos}"></td>
 					<td th:text="${papeleta.puesto.nombre}"></td>
-					<td th:text="${papeleta.fecha}"></td>
+					<td th:text="${#temporals.format(papeleta.fecha, 'dd-MMM-yyyy')}"></td>
 					<td><a href="#"
 						th:href="@{/admin/editarPapeletaSitio/{id}(id=${papeleta.id})}">Editar</a>
 					| <a th:href="@{/admin/borrarPapeletaSitio/{id}(id=${papeleta.id})}" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR ESTA PAPELETA DE SITIO?');">Borrar</a>

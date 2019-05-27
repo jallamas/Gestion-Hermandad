@@ -51,8 +51,8 @@
 					<td th:text="${hermanoHist.telefono}"></td>
 					<td th:text="${hermanoHist.movil}"></td>
 					<td th:text="${hermanoHist.email}"></td>
-					<td th:text="${hermanoHist.fechaAlta}"></td>
-					<td th:text="${hermanoHist.fechaBaja}"></td>
+					<td th:text="${#temporals.format(hermanoHist.fechaAlta, 'dd-MMM-yyyy')}"></td>
+					<td th:text="${#temporals.format(hermanoHist.fechaBaja, 'dd-MMM-yyyy')}"></td>
 					<td><a href="#"
 						th:href="@{/admin/reactivarHnoHist/{id}(id=${hermanoHist.id})}"
 						onclick="return confirm('¿ESTÁ SEGURO DE VOLVER A ACTIVAR ESTE HERMANO?');">Reactivar</a>

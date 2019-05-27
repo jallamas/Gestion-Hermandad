@@ -43,7 +43,7 @@
 					<td th:text="${hermanoProvisional.telefono}"></td>
 					<td th:text="${hermanoProvisional.movil}"></td>
 					<td th:text="${hermanoProvisional.email}"></td>
-					<td th:text="${hermanoProvisional.fechaAlta}"></td>
+					<td th:text="${#temporals.format(hermanoProvisional.fechaAlta, 'dd-MMM-yyyy')}"></td>
 					<td><a th:href="@{/admin/validar/{id}(id=${hermanoProvisional.id})}" onclick="return confirm('¿SEGURO QUE DESEA VALIDAR ESTA SOLICITUD?');">Validar</a>
 						| <a th:href="@{/admin/borrar/{id}(id=${hermanoProvisional.id})}" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR ESTA SOLICITUD?');">Borrar</a>
 					</td>
