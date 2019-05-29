@@ -28,22 +28,22 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 		
 	<fieldset>
 			<legend class="text-warning">Datos personales</legend>
-			<label for="nombre">Nombre:&nbsp;&nbsp;</label><input type="text" th:field="*{nombre}" />
+			<label for="nombre">Nombre:&nbsp;&nbsp;</label><input type="text" th:field="*{nombre}"  required/>
 			<label for="apellidos">Apellidos:&nbsp;&nbsp;</label>
-			<input type="text" th:field="*{apellidos}" />
-			<label for="fechaNacimiento">Fecha de nacimiento:&nbsp;&nbsp;</label><input type="date" th:field="*{fechaNacimiento}" />
+			<input type="text" th:field="*{apellidos}"  required/>
+			<label for="fechaNacimiento">Fecha de nacimiento:&nbsp;&nbsp;</label><input type="date" th:field="*{fechaNacimiento}"  required/>
 			<br><br>
 		</fieldset>
 		<fieldset>
 			<legend class="text-warning">Datos de Contacto</legend>
-			<label for="telefono">Teléfono:&nbsp;&nbsp;</label><input type="text" th:field="*{telefono}" />
+			<label for="telefono">Teléfono:&nbsp;&nbsp;</label><input type="text" th:field="*{telefono}"  required/>
 			<label for="movil">Móvil:&nbsp;&nbsp;</label><input type="text" th:field="*{movil}" />
 			<label for="direccion">Dirección:&nbsp;&nbsp;</label><input type="text" th:field="*{direccion}" />
 			<label for="localidad">Localidad:&nbsp;&nbsp;</label><input type="text" th:field="*{localidad}" /><br><br>
 			<label for="provincia">Provincia:&nbsp;&nbsp;</label><input type="text" th:field="*{provincia}" />
 			<label for="codigoPostal">Código Postal:&nbsp;&nbsp;</label><input type="text" th:field="*{codigoPostal}" size="10px"/>
 			<label for="pais">País:&nbsp;&nbsp;</label><input type="text" th:field="*{pais}" />
-			<label for="email">Email:&nbsp;&nbsp;</label><input type="email" th:field="*{email}" /><br><br>
+			<label for="email">Email:&nbsp;&nbsp;</label><input type="email" th:field="*{email}"  required/><br><br>
 		</fieldset>
 		<fieldset>
 				<legend class="text-warning">Datos de Usuario</legend>
