@@ -100,8 +100,9 @@ public class HermanoController {
 
 	/**
 	 * Método que recoge los datos de formulario de registro de nuevo hermano por
-	 * parte del administrador, le añade la fecha actual como fecha de alta,
-	 * encripta su contraseña y guarda el registro en la base de datos.
+	 * parte del administrador, le añade la fecha actual como fecha de alta, le
+	 * asigna su número de hermano, encripta su contraseña y guarda el registro en
+	 * la base de datos.
 	 * 
 	 * Si el nombre de usuario que se haya introducido en el formulario ya existe en
 	 * la base de datos, lleva a una pantalla de error indicándolo.
@@ -113,6 +114,7 @@ public class HermanoController {
 	public String procesarAlta(@ModelAttribute("hermano") Hermano hermano) {
 		if (hermanoProvisionalServicio.findByUsuario(hermano.getUsuario()).isEmpty()) {
 			hermano.setFechaAlta(LocalDate.now());
+			hermano.setNumHermano(hermanoServicio.obtenerNuevoNumHermano());
 			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			hermano.setPassword(passwordEncoder.encode(hermano.getPassword()));
 			hermanoServicio.save(hermano);
